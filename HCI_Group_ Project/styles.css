@@ -2,12 +2,17 @@ body{
     background-color: #A9C9FF;
     background-image: linear-gradient(135deg, #A9C9FF 0%, #FFBBEC 50%, #ffffff 100%);
 }
+
+.nav >li >a:hover{
+    background: #FFBBEC;
+}
+
 h1{
     text-align: center;
     color: darkorchid;
     padding: 0;
     font-family: 'Roboto Mono', monospace;
-    
+
 }
 .h2{
     text-align: center;
@@ -41,7 +46,7 @@ th,td{
     max-height: auto;
     margin: auto;
     display: inline;
-    
+
 }
 .img2{
     max-width: 32.5%;
