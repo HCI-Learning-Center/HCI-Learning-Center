@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Registration</title>
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.js"
+  		integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+
+ <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
+
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ 
+</head>
+<body>
+
+<!-- <h1>Registration</h1> -->
+
+	<nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="LearningCenterHome.html">BCLC</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <!-- <li class="active"><a href="LearningCenterHome.html">Home <span class="sr-only">(current)</span></a>
+                    </li> -->
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="TutoringSchedule.html">Schedule</a></li>
+                    <li><a href="WritingTutorsSchedule.html">Writing Tutors</a></li>
+                    <li><a href="ContactUsLC.html">Contact Us</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="SignupLC.html">Sign Up</a></li>
+                    <li><a href="loginLC.html">Log In</a></li>
+                </ul>
+                </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+<h1>Registration</h1>
+<!-- onsubmit="return setinfo(this);" -->
+<form  method="get" onsubmit="return setinfo(this);" id ="registion">
+	<label for="primero">First Name</label>
+	<input type="text" name="firstname" placeholder="First Name" id="primero" pattern="[A-Za-z]{1,15}" 
+	oninvalid="this.setCustomValidity('Enter alphabet characters (a-z, A_Z)')" 
+	oninput="this.setCustomValidity('')" value=""> 
+	<br>
+
+	<label for="ultimo">Last Name</label>
+	<input type="text" name="firstname" placeholder="Last Name" id="ultimo" pattern="[A-Za-z]{1,15}" oninvalid="this.setCustomValidity('Enter alphabet letters (a-z, A_Z)')"
+	oninput="this.setCustomValidity('')" value=""> <br>
+
+	<label for="username">Create Username</label>
+	<input type="text" name="username" id="username" placeholder="Username" pattern="[A-Za-z0-9_@!-]{3,15}" oninvalid="this.setCustomValidity('Characters must be either (a-z);(A-Z);(0-9); [ _ | - | ! | @ ]')" oninput="this.setCustomValidity('')" data-error="Hello"> <br>
+
+	<label for="password">Create password</label>
+	<input type="password" name="password" id="password" required minlength="4" placeholder="Password"> 
+	<input type="checkbox" name="toggleMe" onclick=" showPass('password')"> Show Password
+	<br>
+
+	<label for="passReenter">Re-enter Password</label> 
+	<input type="password" name="password2" id="password2" required minlength="4" placeholder="Password"> 
+	<input type="checkbox" name="toggleMe" onclick=" showPass('password2')"> Show Password
+
+	<p id="validate_status"></p>
+	<br>
+
+	<label for="birth">Date of Birth</label>
+	<input type="date" name="birth" id="birth" value=""> <br>
+
+	<label for="email">Email</label>
+	<input type="email" name="e-mail" id="email" placeholder="Email"> <br>
+
+<!-- HERE -->
+	<!-- <label for="major">Major</label>
+	<input type="text" name="major" id="major" placeholder="Major"> <br> -->
+
+<!-- HERE -->
+	<!-- <div class="dropdown">
+		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle= "dropdown">Major <span class="caret"></span> </button>
+		<ul class="dropdown-menu">
+			<li><a href="#"> Computer Science</li>
+			<li><a href="#"> Poopoo</li>
+			<li><a href="#"> 3</li>
+			<li><a href="#"> 4</li>
+		</ul>
+	</div> -->
+
+	<!-- HERE -->
+	<div class="input-group mb-3">
+  		<div class="input-group-prepend">
+    		<label class="input-group-text" for="inputGroupSelect01">Major</label>
+  		</div>
+  			<select class="custom-select" id="inputGroupSelect01">
+    			<option selected value="not_valid" disabled>Choose...</option>
+    			<option value="ACC">Accounting</option>
+    			<option value="ANTH">Anthropology</option> 
+    			<option value="Art">Art</option>
+    			<option value="BIO"> Biology</option>
+    			<option value="BUSADM"> Business Administration</option>
+    			<option value="BUSMANG">Business Managment </option>
+    			<option value="CHEM">Chemistry</option>
+    			<option value="COM">Communication</option>
+    			<option value="CS">Computer Science</option>
+    			<option value="CISC">Computer Information Systems</option>
+    			<option value="EARLYEDU">Early Childhood Education Teacher</option>
+    			<option value="ECO">Econonmics</option>
+    			<option value="ENG">English</option>
+    			<option value="FILM">Film</option> 
+    			<option value="FINANCE">Finance</option>
+    			<option value="HIS">History</option> <option value="LIN">Linguistics</option> <option value="MAT">Mathetmatics</option> <option value="MUS">Music</option> <option value="PHIL">Philosophy</option> <option value="PHY">Physics</option> <option value="POLSCI">Political Science</option> <option value="PSY">Psychology</option> <option value="SOCI">Sociology</option> <option value="THE">Theater</option>
+  			</select>
+	</div>
+
+
+
+	<input type="submit" name="register" id="register" onclick="successRegister()" disabled="disabled"> <br>
+<!-- onclick="successRegister()" --> 
+</form>
+
+
+<a href="login.html">Login Now</a>
+<script src="tutoringcenter.js" ></script>
+
+</body>
+</html>
