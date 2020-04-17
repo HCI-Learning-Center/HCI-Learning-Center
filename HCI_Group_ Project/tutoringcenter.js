@@ -8,7 +8,7 @@ var pass = document.getElementById("password");
   	//Checking if info gets saved 
   	//console.log(localStorage.getItem("userN"));
   	//console.log(localStorage.getItem("passW"));
-
+  	successRegister();
   	return false;
 }
 
@@ -32,12 +32,11 @@ function check(thisForm){
 		});
 		
 		setTimeout(function() {
-			window.location.href = "register.html"; //Will Change to Home
+			window.location.href = "LearningCenterHome.html"; //Will Change to Home
 		} , 5000);
 		
 	}
 	else {
-			//document.getElementById('Login').innerHTML = "Invalid";
 		//	console.log(logfirst);
 		console.log("Bye");
 		// alert("Invalid, try again");
@@ -47,10 +46,7 @@ function check(thisForm){
 			
 		});
 		//window.location.href = "login.html";
-
-	}
-
-	//console.log(l_user);
+}
 	return false;
 
 }
@@ -74,13 +70,37 @@ function validate(){
 	var pass1 = $("#password").val();
 	var pass2 = $("#password2").val();
 
-	if(pass1 == pass2){
+	if(pass1 == pass2 && (pass1&&pass2)!= ""){
 		$("#validate_status").text("Passwords match");
+		$("#validate_status").removeClass("alert-danger").addClass("alert alert-success");
 	}else{
+		
 		$("#validate_status").text("Passwords not match");
+		$("#validate_status").removeClass("alert-success").addClass("alert alert-danger");
 		//swal("passwords don't match", {timer:1000,});
 	}
 }
+
+//Using JQuery, checks if emails match
+$(document).ready(function(){
+	$("#email").keyup(validateEmail);
+	$("#email2").keyup(validateEmail);
+})
+function validateEmail(){
+	var email1 = $("#email").val();
+	var email2 = $("#email2").val();
+ 
+	if( email1 == email2 && (email1&&email)!= " ") {
+		$("#validate_email").text("Emails match");
+		$("#validate_email").removeClass("alert-danger").addClass("alert alert-success");
+			
+	}else{
+		$("#validate_email").text("Emails not match");
+		$("#validate_email").removeClass("alert-success").addClass("alert alert-danger");
+	}
+	
+}
+
 
 //Pointless function, used to debug. DELETE
 function showLoginInfo(){
@@ -91,10 +111,9 @@ function successRegister(){
 	swal("Congrats, account created! Go to 'Login' to login to account",{
   		icon: "success",
   		title: "Success",
-  		showCloseButton: true,
+  		// showCloseButton: true,
   		timer: 5000,
 	});
-
 }
 
 
@@ -102,7 +121,7 @@ function successRegister(){
 $(document).ready(function (){
 
 	var major = $("inputGroupSelect01").val();
-	var major2 =	document.getElementById("inputGroupSelect01").value;
+	//var major2 =	document.getElementById("inputGroupSelect01").value;
 
 	$('#primero, #ultimo, #username, #password,#password2,#birth, #email, #inputGroupSelect01'  ).change(function(){
 		if($("#primero").val().length && $("#ultimo").val().length && $("#username").val().length && $("#password").val().length && $("#password2").val().length && $("#birth").val().length && $("#email").val().length  &&
@@ -117,9 +136,25 @@ $(document).ready(function (){
 	});
 });
 
-//&& $("#inputGroupSelect01").val().length
-//&& $("#inputGroupSelect01").value )
-//( $("#inputGroupSelect01 ").val()!= "not_valid")
-//&& $("#major").val().length
+$(document).ready(function(){
+	let user = $("#login_username").val();
+	let pass = $("#login_password").val();
+
+	$("#login_password, login_username").keyup(function(){
+		if( ($("#login_username").val() && $("#login_password").val() ) == "") {
+			$("#login_submit").prop('disabled', true);
+		} else{
+			$("#login_submit").prop('disabled', false);
+		}
+
+	// $('#login_username, login_password').change(function(){
+	// 	if( $("#login_username").val().length && $("#login_password").val().length ) {
+	// 		$("#login_submit").prop('disabled', false);
+	// 	} else{
+	// 		$("#login_submit").prop('disabled', true);
+	// 	}
+	});
+});
+
 
 

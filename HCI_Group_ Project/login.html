@@ -14,8 +14,55 @@
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
+    <link rel="stylesheet" type="text/css" href="styles2.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+
 	<script src="tutoringcenter.js" defer></script>
 	
+<style type="text/css">
+    .login-form {
+        width: 340px;
+        margin: 50px auto;
+    }
+    .login-form form {
+        margin-bottom: 15px;
+        background: #f7f7f7;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+        padding: 30px;
+        border-radius: 5px;
+    }
+    .login-form h2 {
+        margin: 0 0 15px;
+    }
+    .form-control, .btn {
+        min-height: 38px;
+        border-radius: 2px;
+    }
+    .login-form label{
+        /*margin-bottom: 20px;*/
+    }
+    .btn {        
+        font-size: 15px;
+        font-weight: bold;
+        /*margin-top: 10px;*/
+        /*margin: 10px auto;
+*/
+    }
+    .formcontrol, .form-footer{
+       
+        background: #ecf0f1;
+        border-color: #dee4e7;
+        text-align: center;
+        margin: 0 -20px -20px;
+        border-radius: 5px;
+        font-size: 15px;
+        justify-content: center;
+        margin-top:30px; margin-bottom: 0px;
+    }
+    
+</style>
+
+
 </head>
 <body>
 
@@ -46,28 +93,45 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="SignupLC.html">Sign Up</a></li>
-                    <li><a href="loginLC.html">Log In</a></li>
+                    <li><a href="login.html">Log In</a></li>
                 </ul>
                 </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
+<!-- <div class="h1">
+    <h1>Login</h1>
+</div> -->
 
-<h1>Login</h1>
+<div class="container login-form">
+    <div id="formContent">
+        <form method="get" onsubmit="return check(this);" id="Login">
+        <h2>Log in</h2>
 
-<form method="get" onsubmit="return check(this);" id="Login">
-	<label>Enter Username:
-		<input type="text" name="login_username" placeholder="first" id="login_username" value="" required>
-	</label>
-	<br>
-	<label>Enter Password:
-		<input type="password" name="login_password" placeholder="last" id="login_password" value="">
-		<input type="checkbox" name="toggleMe" onclick=" showPass('login_password')"> Show Password <br>
-	</label>
+        <div class="form-group">
+	       <label>Enter Username:
+		      <input type="text" name="login_username" placeholder="Username" id="login_username" value="" class="form-control" required>
+	       </label>
+	      
+        </div>
+        <div class="form-group"> 
+	       <label>Enter Password:
+		      <input type="password" name="login_password" placeholder="Password" id="login_password" class="form-control" value=""> 
+		      <input type="checkbox" name="toggleMe" onclick=" showPass('login_password')" > Show Password <br>
+	       </label>
+        </div>
+        
+        <div class="form-group">    
+	       <input type="submit" name="Login" id="login_submit" value="Log in" class="btn btn-primary btn-block" disabled="disabled">
+        </div> 
+           <p class="form-footer text-center"><a href="register.html">Create an Account</a></p>
+        </form>
 
-	<input type="submit" name="Login" id="submit">
-</form>
+    </div>
+
+    <!-- <p class="form-footer text-center"><a href="register.html">Create an Account</a></p> -->
+</div>
 
 <!-- <button onclick="showLoginInfo()">Click Here</button> -->
 
