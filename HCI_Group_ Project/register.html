@@ -100,25 +100,44 @@
 <!-- onsubmit="return setinfo(this);" -->
 <div class="container login-form ">
 <form  method="get" onsubmit="return setinfo(this);" id ="registion">
-<h2>Registeration</h2>    
-    <div class="form-group">
+<h2>Create Account</h2>    
+    <div class="form-group has-feedback" id="firstDiv">
 	   <label for="primero">First Name</label>
-	   <input type="text" name="firstname" class="form-control"placeholder="First Name" id="primero" pattern="[A-Za-z]{1,15}" minlength="1" oninvalid="this.setCustomValidity('Enter alphabet characters (a-z, A_Z)')"   oninput="this.setCustomValidity('')" value=""> 
+	   <input type="text" name="firstname" class="form-control"placeholder="First Name" id="primero" pattern="[A-Za-z]{1,15}" minlength="1" oninvalid="this.setCustomValidity('Enter alphabet characters (a-z, A_Z)')"   oninput="this.setCustomValidity('')" onblur="visualValidation(this.id, 'firstDiv','helpBlockFirst')" onchange="removeVisual('firstDiv','helpBlockFirst'); showGlyphicon('trueGlyphicon1','falseGlyphicon1', 'firstDiv', this.id);" value=""> 
+
+       <span id="helpBlockFirst" class="help-block" style="display:none">Required. Alphabet characters only.</span> 
+
+       <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="trueGlyphicon1"></span> 
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" style="visibility: hidden" id="falseGlyphicon1"></span>
     </div>
-    <div class="form-group">
+
+    <div class="form-group has-feedback" id="lastDiv">
 	   <label for="ultimo">Last Name</label>
-	   <input type="text" name="firstname" class="form-control" placeholder="Last Name" id="ultimo" pattern="[A-Za-z]{1,15}" oninvalid="this.setCustomValidity('Enter alphabet letters (a-z, A_Z)')"  minlength="1 "oninput="this.setCustomValidity('')" value="">
+	   <input type="text" name="firstname" class="form-control" placeholder="Last Name" id="ultimo" pattern="[A-Za-z]{1,15}" oninvalid="this.setCustomValidity('Enter alphabet letters (a-z, A_Z)')"  minlength="1 "oninput="this.setCustomValidity('')" value="" onblur="visualValidation(this.id, 'lastDiv','helpBlockLast')" onchange="removeVisual('lastDiv','helpBlockLast');showGlyphicon('trueGlyphicon2','falseGlyphicon2', 'lastDiv', this.id);">
+
+        <span id="helpBlockLast" class="help-block" style="display:none">Required. Alphabet characters only.</span>
+
+        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="trueGlyphicon2"></span> 
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" style="visibility: hidden" id="falseGlyphicon2"></span> 
+
      </div>
-     <div class="form-group">
+
+    <div class="form-group has-feedback" id="usernameDiv">
 	   <label for="username">Create Username</label>
-	   <input type="text" name="username" class="form-control" id="username" placeholder="Username" pattern="[A-Za-z0-9_@!-]{3,15}" oninvalid="this.setCustomValidity('Characters must be either (a-z);(A-Z);(0-9); [ _ | - | ! | @ ]')" oninput="this.setCustomValidity('')" data-error="Hello"> 
+	   <input type="text" name="username" class="form-control" id="username" placeholder="Username" pattern="[A-Za-z0-9_@!-]{3,15}" oninvalid="this.setCustomValidity('Characters must be either (a-z);(A-Z);(0-9); [ _ | - | ! | @ ]')" oninput="this.setCustomValidity('')" data-error="Hello" onblur="visualValidation(this.id, 'usernameDiv','helpBlockUsername')" onchange="removeVisual('usernameDiv','helpBlockUsername');showGlyphicon('trueGlyphicon3','falseGlyphicon3', 'usernameDiv', this.id);"> 
+       <span id="helpBlockUsername" class="help-block" style="display:none">Required. Characters permitted (must be at least 3 characters): (a-z) or (A-Z) or (0-9) or or _ or - or ! or @</span> 
+
+       <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="trueGlyphicon3"></span> 
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" style="visibility: hidden" id="falseGlyphicon3"></span> 
     </div> 
+
     <div class="form-group">
 	   <label for="password">Create password</label>
 	   <input type="password" name="password" class="form-control" id="password" required minlength="4" placeholder="Password"> 
 	   <input type="checkbox" name="toggleMe" onclick=" showPass('password')">  Show Password
 	 <br><br>
     </div>
+
     <div class="form-group">
 	   <label for="passReenter">Confirm Password</label> 
 	   <input type="password" name="password2" class="form-control" id="password2" required minlength="4" placeholder="Re-enter Password"> 
@@ -132,10 +151,12 @@
 	   <label for="birth">Date of Birth</label>
 	   <input type="date" name="birth" class="form-control" id="birth" value=""> 
     </div>
+
     <div class="form-group">
 	   <label for="email">Email</label>
 	   <input type="email" name="e-mail" class="form-control" id="email" placeholder="Email"> 
-    </div>   
+    </div> 
+
     <div class="form-group">
    
        <label for="email2">Confirm email</label>

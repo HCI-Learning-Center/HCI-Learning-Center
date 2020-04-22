@@ -111,7 +111,7 @@ function autotab(original, destination){
 		destination.focus();
 	}
 }
-//Validates if the form if filled out, with the exception of the textarea box and picture upload
+//Validates if the form if filled out, with the exception of the textarea box and picture upload. ENABLED submit button when satisfactory
 $(document).ready(function(){
 	$("#signup_firstname,#signup_lastname,#preferred_email, #phone,#phone2,#phone3, input[name='days_available'],#time_available,#start-work,#course_1, input[name='status'] ").change(function(){
 		if ($("#signup_firstname").val().length && $("#signup_lastname").val().length && $("#preferred_email").val().length && $("#phone").val().length&& $("#phone2").val().length&& $("#phone3").val().length  &&  $("input[name='days_available']:checked").length > 0 && $("#time_available option:selected").length >0 && $("#start-work option:selected" ).val() !='no_val' && $("#course_1").val()!=""  && $("input[name='status']:checked").length > 0 ){

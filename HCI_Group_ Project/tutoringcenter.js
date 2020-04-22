@@ -60,6 +60,47 @@ function showPass(id){
 		x.type = "password";
 	}
 }
+//Visual Feedback is user doesn't adhere to pattern of the element
+function visualValidation(id, idStyle, idMessage){
+	var input = document.getElementById(id); //id of the element calling the funciton; (this.id)
+	var input2 = document.getElementById(idStyle); //Div ID's style that will be changed 
+
+	//If pattern matches, add success
+	if( input.validity.patternMismatch == false && input.value != ""){
+		input2.classList.add('has-success');
+	} else{
+		input2.classList.add('has-error');
+		document.getElementById(idMessage).style.display="block";
+	}
+}
+//To Remove the visual feedback and color
+function removeVisual(id, idSpanMessage){
+	var removeDivStyle = document.getElementById(id);
+	document.getElementById(idSpanMessage).style.display="none";
+	
+	if(removeDivStyle.classList.contains('has-success')==true ){
+		removeDivStyle.classList.remove('has-success');
+	}else if (removeDivStyle.classList.contains('has-error') ==true) {
+		removeDivStyle.classList.remove('has-error');
+	}
+	else return false;
+}
+
+function showGlyphicon(idSuccessGly, idErrorGly, idStyle,thisID){
+	var success = document.getElementById(idSuccessGly);
+	var error = document.getElementById(idErrorGly);
+	var idStyle = document.getElementById(idStyle);
+	var this_ID = document.getElementById(thisID);
+
+	if(this_ID.validity.patternMismatch == false && this_ID.value != ""){
+		if((error.style.visibility = 'hidden')== false ){ error.style.visibility = 'hidden';}
+		success.style.visibility = "visible";
+	}else{
+		if((success.style.visibility = "hidden")== false ){ success.style.visibility = 'hidden';}
+		
+		error.style.visibility = 'visible';
+	}
+}
 
 //Using JQuery, checks if the password match
 $(document).ready(function (){
