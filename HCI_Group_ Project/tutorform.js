@@ -121,7 +121,7 @@ $(document).ready(function(){
 		}
 	});
 });
-
+//Adds Success or Error styling class, depending if input matches pattern of element
 function visualValidation(id, idStyle, idMessage){
 	var input = document.getElementById(id); //id of the element calling the funciton; (this.id)
 	var input2 = document.getElementById(idStyle); //Div ID's style that will be changed 
@@ -134,6 +134,7 @@ function visualValidation(id, idStyle, idMessage){
 		document.getElementById(idMessage).style.display="block";
 	}
 }
+//Adds Success or Error styling class, depending if input matches pattern of element for Email element
 function visualValEmail(id, idStyle, idMessage){
 	var input = document.getElementById(id); //Element text ID; this.id
 	var input2 = document.getElementById(idStyle);
@@ -216,6 +217,27 @@ $(document).ready(function(){
 		}	
 	});
 });
+
+
+function showGlyphicon(idSuccessGly, idErrorGly, idStyle,thisID){
+	var success = document.getElementById(idSuccessGly);
+	var error = document.getElementById(idErrorGly);
+	var idStyle = document.getElementById(idStyle);
+	var this_ID = document.getElementById(thisID);
+
+	if(this_ID.validity.patternMismatch == false && this_ID.value != ""){
+		if((error.style.visibility = 'hidden')== false ){ 
+			error.style.visibility = 'hidden';
+		}
+		success.style.visibility = "visible";
+	}else{
+		if((success.style.visibility = "hidden")== false ){ success.style.visibility = 'hidden';}
+		
+		error.style.visibility = 'visible';
+	}
+}
+
+
 
 function showfker(){
 	console.log(document.getElementById('start-work').value);
