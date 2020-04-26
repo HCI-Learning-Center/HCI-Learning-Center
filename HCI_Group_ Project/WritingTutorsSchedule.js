@@ -158,6 +158,29 @@ let tutors = [
 console.log(tutors)
 
 
-
+//Displays mini calendar. Highlights todays date.
+//utilizes moment.js library to get day of the week
 $('#mini-calendar').datepicker({
+  todayHighlight: true
 });
+
+$('#mini-calendar').on('changeDate', function() {
+  $('#selected-date-input').val(
+      $('#mini-calendar').datepicker('getFormattedDate')
+  );
+  console.log($('#selected-date-input'));//Retrieves the date clicked on
+  console.log(moment().format('dddd'));
+
+  //saves the value of the date
+  let value = $('#selected-date-input')[0].value;
+  let dateDisplayString = moment(value).format('dddd, MMMM Do YYYY');
+  //moment(value).format('dddd') + value;
+
+  //displays in the h3 selected-date tag
+   $('#selected-date').html(dateDisplayString)
+});
+
+function displayAvailableAppointments() {
+
+
+}
