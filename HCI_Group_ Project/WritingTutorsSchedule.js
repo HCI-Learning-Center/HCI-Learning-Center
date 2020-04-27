@@ -164,32 +164,43 @@ let tutors = [
 
 
 
-
+//Event Handler: When date is selected on the mini calendar, value is saved and displayed on the H3 heading
 $('#mini-calendar').on('changeDate', function() {
-  $('#selected-date-input').val(
-      $('#mini-calendar').datepicker('getFormattedDate')
-  );
-  console.log($('#selected-date-input'));//Retrieves the date clicked on
-  console.log(moment().format('dddd'));
-
-  //saves the value of the date
-  let value = $('#selected-date-input')[0].value;
-  let dateDisplayString = moment(value).format('dddd, MMMM Do YYYY');
-  //moment(value).format('dddd') + value;
-
-  //displays in the h3 selected-date tag
-   $('#selected-date').html(dateDisplayString)
+  displaySelectedDate()
 });
+
+//display selected date in header
+function displaySelectedDate(){
+      $('#selected-date-input').val(
+        $('#mini-calendar').datepicker('getFormattedDate')
+    );
+    console.log($('#selected-date-input'));//Retrieves the date clicked on
+    console.log(moment().format('dddd'));
+
+    //saves the value of the date
+    let value = $('#selected-date-input')[0].value;
+    let dateDisplayString = moment(value).format('dddd, MMMM Do YYYY');
+    //moment(value).format('dddd') + value;
+
+    //displays in the h3 selected-date tag
+    $('#selected-date').html(dateDisplayString)
+}
+
+//Reverts mini calendar back to today's date
+function miniCalendarToday(){
+  $('#mini-calendar').datepicker('update', new Date())
+  displaySelectedDate()
+}
 
 function displayAvailableAppointments() {
 
   let availableAppointmentsHTML = '';
   for (let tutor of tutors) {
       for (let appointment of tutor.appointments){
-        availableAppointmentsHTML +=`<div>
-        Tutor: ${tutor.name}
-        Time: ${appointment.startTime} - ${appointment.endTime}
-        Location: ${appointment.location}
+        availableAppointmentsHTML +=`<div class="appointment-slot">
+        <p class="tutor-name"> Tutor: ${tutor.name}</p>
+        <p class="time">Time: ${moment(appointment.startTime).format('h:mm')} - ${moment(appointment.endTime).format('h:mm')} </p>
+        <p class="location"> Location: ${appointment.location} </p>
         </div>`
       }
   }
@@ -199,8 +210,7 @@ function displayAvailableAppointments() {
 
 
 
-//Making use of the load function, as it will fire when the whole page has loaded, including all dependent resources such as stylesheets and images
-
+//Making use of the load function, as it will fire once the whole page has loaded, including all dependent resources such as stylesheets and images
 window.addEventListener('load', (event) => {
 
   $('#selected-date').html(moment().format('dddd, MMMM Do YYYY'))

@@ -8,7 +8,9 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles2.css">
 
-
+    <!--Specifically for the Writing Tutors Schedule Page for the Mini Calendar and CDN link to access JQuery API-->
+    <link rel="stylesheet" href="WritingTutorsSchedule.css">
+    <link rel="stylesheet" href="bootstrap-datepicker/css/bootstrap-datepicker3.css">
     <link rel="stylesheet" href="bootstrap-datepicker/css/bootstrap-datepicker3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -51,6 +53,8 @@
 
     <div id="mini-calendar"></div>
     <input type="hidden" id="selected-date-input">
+    <button onclick="miniCalendarToday()"> Today </button>
+
     <h2 id="selected-date"></h2>
 
     <div id="appointment-list"></div>

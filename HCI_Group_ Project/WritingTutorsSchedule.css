@@ -1,0 +1,3 @@
+body{
+  height: 100%; /*this is to prevent jarring/ visible loading discrepancies, when gradient adjusts after content that takes a while to load loads*/
+}
