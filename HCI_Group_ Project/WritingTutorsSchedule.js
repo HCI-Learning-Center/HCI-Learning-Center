@@ -86,24 +86,24 @@ let tutors = [
 					student: '', //insert entire student object here if possible
 				},
 				{
-					startTime: new Date(2020, sampleMonth, sampleDay, 1, 0),
-					endTime: new Date(2020, sampleMonth, sampleDay, 1, 20),
+					startTime: new Date(2020, sampleMonth, sampleDay, 12 + 1, 0),
+					endTime: new Date(2020, sampleMonth, sampleDay, 12+ 1, 20),
 					location: 'BH 3129',
 					description: '',
 					status: 'available',
 					student: '', //insert entire student object here if possible
 				},
 				{
-					startTime: new Date(2020, sampleMonth, sampleDay, 1, 40),
-					endTime: new Date(2020, sampleMonth, sampleDay, 2, 0),
+					startTime: new Date(2020, sampleMonth, sampleDay, 12 + 1, 40),
+					endTime: new Date(2020, sampleMonth, sampleDay, 12 + 2, 0),
 					location: 'BH 3129',
 					description: '',
 					status: 'available',
 					student: '', //insert entire student object here if possible
 				},
 				{
-					startTime: new Date(2020, sampleMonth, sampleDay, 2, 20),
-					endTime: new Date(2020, sampleMonth, sampleDay, 2, 40),
+					startTime: new Date(2020, sampleMonth, sampleDay, 12 + 2, 20),
+					endTime: new Date(2020, sampleMonth, sampleDay, 12 + 2, 40),
 					location: 'BH 3129',
 					description: '',
 					status: 'available',
@@ -117,40 +117,40 @@ let tutors = [
 		name: 'Shikamaru Nara',
 		appointments: [
 				{
-					startTime: new Date(2020, sampleMonth, sampleDay, 4, 0),
-					endTime: new Date(2020, sampleMonth, sampleDay, 4, 20),
+					startTime: new Date(2020, sampleMonth, sampleDay, 12 + 4, 0),
+					endTime: new Date(2020, sampleMonth, sampleDay, 12 + 4, 20),
 					location: 'BH 3129',
 					description: '',
 					status: 'available',
 					student: '', //insert entire student object here if possible
 				},
 				{
-					startTime: new Date(2020, sampleMonth, sampleDay, 4, 20),
-					endTime: new Date(2020, sampleMonth, sampleDay, 4, 40),
+					startTime: new Date(2020, sampleMonth, sampleDay, 12 + 4, 20),
+					endTime: new Date(2020, sampleMonth, sampleDay, 12 + 4, 40),
 					location: 'BH 3129',
 					description: '',
 					status: 'available',
 					student: '', //insert entire student object here if possible
 				},
 				{
-					startTime: new Date(2020, sampleMonth, sampleDay, 5, 0),
-					endTime: new Date(2020, sampleMonth, sampleDay, 5, 20),
+					startTime: new Date(2020, sampleMonth, sampleDay, 12 + 5, 0),
+					endTime: new Date(2020, sampleMonth, sampleDay, 12 + 5, 20),
 					location: 'BH 3129',
 					description: '',
 					status: 'available',
 					student: '', //insert entire student object here if possible
 				},
 				{
-					startTime: new Date(2020, sampleMonth, sampleDay, 5, 20),
-					endTime: new Date(2020, sampleMonth, sampleDay, 5, 40),
+					startTime: new Date(2020, sampleMonth, sampleDay, 12 + 5, 20),
+					endTime: new Date(2020, sampleMonth, sampleDay, 12 + 5, 40),
 					location: 'BH 3129',
 					description: '',
 					status: 'available',
 					student: '', //insert entire student object here if possible
 				},
 				{
-					startTime: new Date(2020, sampleMonth, sampleDay, 5, 40),
-					endTime: new Date(2020, sampleMonth, sampleDay, 6, 0),
+					startTime: new Date(2020, sampleMonth, sampleDay, 12 + 5, 40),
+					endTime: new Date(2020, sampleMonth, sampleDay, 12 + 6, 0),
 					location: 'BH 3129',
 					description: '',
 					status: 'available',
@@ -162,14 +162,21 @@ let tutors = [
 
 //console.log(tutors)
 
-
+//Today Button added via Javascript to make loading look more smooth
+function addTodayButton(){
+    let button = document.createElement("button");
+button.innerHTML = "Today";
+    let calendar = document.getElementById("calendar-section");
+    calendar.append(button);
+    button.addEventListener ("click", miniCalendarToday)
+}
 
 //Event Handler: When date is selected on the mini calendar, value is saved and displayed on the H3 heading
 $('#mini-calendar').on('changeDate', function() {
   displaySelectedDate()
 });
 
-//display selected date in header
+//Display selected date in header
 function displaySelectedDate(){
       $('#selected-date-input').val(
         $('#mini-calendar').datepicker('getFormattedDate')
@@ -194,24 +201,31 @@ function miniCalendarToday(){
 
 function displayAvailableAppointments() {
 
-  let availableAppointmentsHTML = '';
+
+  let appointmentHTML = '';
   for (let tutor of tutors) {
       for (let appointment of tutor.appointments){
-        availableAppointmentsHTML +=`<div class="appointment-slot">
+        let listIndex = moment(appointment.startTime).format('h')
+          console.log(listIndex)
+          appointmentHTML =`<div class="appointment-slot">
         <p class="tutor-name"> Tutor: ${tutor.name}</p>
-        <p class="time">Time: ${moment(appointment.startTime).format('h:mm')} - ${moment(appointment.endTime).format('h:mm')} </p>
+        <p class="time">Time: ${moment(appointment.startTime).format('LT')} - ${moment(appointment.endTime).format('LT')} </p>
         <p class="location"> Location: ${appointment.location} </p>
         </div>`
+
+        $(`#${listIndex}`).append(appointmentHTML)
       }
   }
-  console.log(availableAppointmentsHTML)
-  $('#appointment-list').append(availableAppointmentsHTML)
+  //console.log(availableAppointmentsHTML)
+
 }
 
 
 
 //Making use of the load function, as it will fire once the whole page has loaded, including all dependent resources such as stylesheets and images
 window.addEventListener('load', (event) => {
+
+  addTodayButton();
 
   $('#selected-date').html(moment().format('dddd, MMMM Do YYYY'))
 
@@ -220,7 +234,8 @@ window.addEventListener('load', (event) => {
 $('#mini-calendar').datepicker({
   todayHighlight: true
 });
-
+//set active date on mini calendar to today
+$('#mini-calendar').datepicker('update', new Date())
 
 displayAvailableAppointments();
 
