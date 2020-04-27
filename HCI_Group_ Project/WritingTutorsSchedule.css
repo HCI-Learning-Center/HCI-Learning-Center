@@ -1,3 +1,18 @@
 body{
   height: 100%; /*this is to prevent jarring/ visible loading discrepancies, when gradient adjusts after content that takes a while to load loads*/
 }
+
+#appointment-list li {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x:auto;
+}
+
+#selected-appointment{
+  background-color: blueviolet;
+}
+
+.appointment-slot:hover{
+  background-color: peachpuff;
+}

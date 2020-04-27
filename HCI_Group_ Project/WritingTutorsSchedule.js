@@ -201,26 +201,38 @@ function miniCalendarToday(){
 
 function displayAvailableAppointments() {
 
-
   let appointmentHTML = '';
   for (let tutor of tutors) {
       for (let appointment of tutor.appointments){
+        //match appointment time to list index/id
         let listIndex = moment(appointment.startTime).format('h')
           console.log(listIndex)
-          appointmentHTML =`<div class="appointment-slot">
+
+          appointmentHTML = `<div class="appointment-slot">
         <p class="tutor-name"> Tutor: ${tutor.name}</p>
         <p class="time">Time: ${moment(appointment.startTime).format('LT')} - ${moment(appointment.endTime).format('LT')} </p>
         <p class="location"> Location: ${appointment.location} </p>
         </div>`
 
+        //sorted into the matching list index
         $(`#${listIndex}`).append(appointmentHTML)
-      }
+    }
   }
-  //console.log(availableAppointmentsHTML)
+  //Adds an event handler to each appointment
+  $(`.appointment-slot`).click(clickAppointment)
+}
+
+//event handler calls this function when user clicks on an appointment
+function clickAppointment(){
+  //this.id = 'selected-appointment'
+  console.log(this)
 
 }
 
+function displayAvailableAppointmentsCSS() {
 
+
+}
 
 //Making use of the load function, as it will fire once the whole page has loaded, including all dependent resources such as stylesheets and images
 window.addEventListener('load', (event) => {
