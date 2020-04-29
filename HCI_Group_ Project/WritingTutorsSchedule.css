@@ -2,6 +2,17 @@ body{
   height: 100%; /*this is to prevent jarring/ visible loading discrepancies, when gradient adjusts after content that takes a while to load loads*/
 }
 
+#writing-tutors-section{
+  display: grid;
+  grid-template-columns: 75% 25px;
+  grid-template-rows:  repeat('auto-fill');
+
+  grid-template-areas:
+  "header header calendar" // can place . instead to designate an empty cell
+  "schedule schedule content"
+  "schedule schedule book";
+}
+
 #appointment-list li {
   display: flex;
   flex-direction: row;
@@ -35,4 +46,8 @@ li > div {
 
 label+input[type="radio"]:checked{
   background-color: red;
+}
+
+#book-button{
+  margin: 1em;
 }

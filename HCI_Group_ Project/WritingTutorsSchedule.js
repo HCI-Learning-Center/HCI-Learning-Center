@@ -226,7 +226,8 @@ function displaySelectedDate(){
 //Reverts mini calendar back to today's date
 function miniCalendarToday(){
   $('#mini-calendar').datepicker('update', new Date())
-  displaySelectedDate()
+	displaySelectedDate()
+	displayAvailableAppointments()
 }
 
 //Goes through the tutors array, and displays available appointments based on selected day. (It is displayed by generating HTML. This links the DOM and the tutors array
@@ -324,7 +325,12 @@ function bookAppointment(){
 	appointment.status = 'booked'
 	displayAvailableAppointments();
 
-	$('#confirm-booking').html("Your appointment has been booked! Check your email for confirmation");
+
+
+	$('#confirm-booking').html(`Your appointment has been booked! Check your email for confirmation.
+	You are booked with ${tutors[employeeId].name} on ${moment(appointment.startTime).format('dddd, MMMM Do, YYYY')} between ${moment(appointment.startTime).format('LT')}- ${moment(appointment.endTime).format('LT')}
+
+	`);
 }
 
 //Making use of the load function, as it will fire once the whole page has loaded, including all dependent resources such as stylesheets and images
