@@ -1,3 +1,5 @@
+//Used for login.html and resigter.html
+
 function setinfo(thisForm){
 
 var user = document.getElementById("username");
