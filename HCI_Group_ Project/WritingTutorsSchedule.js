@@ -71,6 +71,30 @@ let tutors = [
 		name: 'John Smith',
 		employeeId: 1,
 		appointments: [
+			{
+				startTime: new Date(2020, sampleMonth, sampleDay, 10, 0),
+				endTime: new Date(2020, sampleMonth, sampleDay, 10, 20),
+				location: 'BH 3129',
+				description: 'John Smith specializes in Creative Writing and would love to be of assistance.',
+				status: 'available',
+				student: '', //insert entire student object here if possible
+			},
+			{
+				startTime: new Date(2020, sampleMonth, sampleDay, 10, 20),
+				endTime: new Date(2020, sampleMonth, sampleDay, 10, 40),
+				location: 'BH 3129',
+				description: 'John Smith specializes in Creative Writing and would love to be of assistance.',
+				status: 'available',
+				student: '', //insert entire student object here if possible
+			},
+			{
+				startTime: new Date(2020, sampleMonth, sampleDay, 10, 40),
+				endTime: new Date(2020, sampleMonth, sampleDay, 11, 0),
+				location: 'BH 3129',
+				description: 'John Smith specializes in Creative Writing and would love to be of assistance.',
+				status: 'available',
+				student: '', //insert entire student object here if possible
+			},
 				{
 					startTime: new Date(2020, sampleMonth, sampleDay, 11, 0),
 					endTime: new Date(2020, sampleMonth, sampleDay, 11, 20),
@@ -213,10 +237,15 @@ function displayAvailableAppointments() {
   for (let tutor of tutors) {
       for (let [i, appointment] of tutor.appointments.entries()){
 
-				let selectedDate = $('#selected-date-input')[0].value || new Date(); //either selected date or if nothing selected, gtoday's date
-					console.log("TESTING", selectedDate, "testing")
+		console.log(tutors)//if the appointment is not available, then do not display it, and move on to next round of the for loop
+								if(appointment.status !== 'available') continue;
+
+				let selectedDate = $('#selected-date-input')[0].value || new Date(); //either set to selected date or if nothing selected on mini calendar, default value is today's date
+
 				//if the appointment is not on selected date, then skip rendering appointment information. We only want to render appointments of selected day.
-				if (moment(appointment.startTime).format('MMMM Do YYYY') !== moment(selectedDate).format('MMMM Do YYYY')) break;
+				if (moment(appointment.startTime).format('MMMM Do YYYY') !== moment(selectedDate).format('MMMM Do YYYY')) continue;
+
+
 
         //match appointment time to list index/id
         let listIndex = moment(appointment.startTime).format('h')
@@ -249,9 +278,9 @@ function clickAppointment(){
 	$('div').removeClass('selectedAppCSS')
 
 	//change background color
-	var radioSelectedId = $("input[name='app']:checked").val(); //selected appointment of the form app "employeeId:${tutor.employeeId}appIndex:${i}"
+ //selected appointment of the form app "employeeId:${tutor.employeeId}appIndex:${i}"
 	//radioSelectedId is passed to a function and returns position in tutors array
-	var [employeeId, appIndex] = findAppointmentInArray(radioSelectedId)
+	var [employeeId, appIndex] = findAppointmentInArray()
 
 	//adds a class to selected appointment slot so it highlights
 	$(`#div_employeeId_${employeeId}_appIndex_${appIndex}`).addClass('selectedAppCSS')
@@ -267,26 +296,35 @@ function clickAppointment(){
 			<p> Location: <br>${appointment.location} </p>
 
 			${appointment.description ? "<p>Description: <br>"+ appointment.description +"</p>": ''}
+			<br>
+
 			`);
 }
 
 //radioSelectedId is passed to a function and returns position in tutors array
 //This function first parses radioSelectedId and links it to appointment in array
 //The purpose is to manipulate appointment directly in the array if need be
-//return an array of [employeeId, appIndex]
-function findAppointmentInArray(radioSelectedId){
+//return an array of [employeeId, appIndex, appointment]
+function findAppointmentInArray(){
 	//radioSelectedId is of the form "employeeId:${tutor.employeeId}:appIndex:${i}"
+	var radioSelectedId = $("input[name='app']:checked").val();
 	let radioParsed = radioSelectedId.split("_");
 	console.log(radioParsed)
 	let employeeId = radioParsed[1];
 	let appIndex = radioParsed[3];
 	console.log(tutors[employeeId].appointments[appIndex])
-	return [employeeId, appIndex];
+	let appointment = tutors[employeeId].appointments[appIndex]
+	return [employeeId, appIndex, appointment];
 }
 
-function displayAvailableAppointmentsCSS() {
 
+function bookAppointment(){
 
+	let [employeeId, appIndex, appointment] = findAppointmentInArray()
+	appointment.status = 'booked'
+	displayAvailableAppointments();
+
+	$('#confirm-booking').html("Your appointment has been booked! Check your email for confirmation");
 }
 
 //Making use of the load function, as it will fire once the whole page has loaded, including all dependent resources such as stylesheets and images

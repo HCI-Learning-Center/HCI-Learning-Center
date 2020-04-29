@@ -10,7 +10,8 @@ body{
 }
 li > div {
   margin: 1em;
-  width: 22%;
+  min-width: 20%;
+  max-width: 20%;
 }
 
 .appointment-slot{
