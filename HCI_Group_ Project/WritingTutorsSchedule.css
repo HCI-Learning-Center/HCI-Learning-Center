@@ -10,7 +10,7 @@ body{
 }
 
 #selected-appointment{
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
 }
 
 .appointment-slot:hover{

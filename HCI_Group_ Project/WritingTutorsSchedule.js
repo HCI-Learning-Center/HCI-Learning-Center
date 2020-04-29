@@ -22,6 +22,7 @@ console.log(sampleMonth, sampleDay);
 let tutors = [
 	{
 		name: 'Jenna Doe',
+		employeeId: 0,
 		appointments: [
 				{
 					startTime: new Date(2020, sampleMonth, sampleDay, 10, 0),
@@ -68,6 +69,7 @@ let tutors = [
 
 	{
 		name: 'John Smith',
+		employeeId: 1,
 		appointments: [
 				{
 					startTime: new Date(2020, sampleMonth, sampleDay, 11, 0),
@@ -115,6 +117,7 @@ let tutors = [
 
 	{
 		name: 'Shikamaru Nara',
+		employeeId: 2,
 		appointments: [
 				{
 					startTime: new Date(2020, sampleMonth, sampleDay, 12 + 4, 0),
@@ -199,21 +202,24 @@ function miniCalendarToday(){
   displaySelectedDate()
 }
 
+//Goes through the tutors array, and displays available appointments based on selected day. (It is displayed by generating HTML. This links the DOM and the tutors array
 function displayAvailableAppointments() {
-
   let appointmentHTML = '';
   for (let tutor of tutors) {
-      for (let appointment of tutor.appointments){
+      for (let [i, appointment] of tutor.appointments.entries()){
         //match appointment time to list index/id
         let listIndex = moment(appointment.startTime).format('h')
-          console.log(listIndex)
+        let appointmentJSON = JSON.stringify(appointment);
 
-          appointmentHTML = `<div class="appointment-slot">
+          appointmentHTML = `
+					<div class="appointment-slot">
+					<input type="radio" id= "employeeId:${tutor.employeeId}:appIndex:${i}" name="app" value="employeeId_${tutor.employeeId}_appIndex_${i}">
         <p class="tutor-name"> Tutor: ${tutor.name}</p>
         <p class="time">Time: ${moment(appointment.startTime).format('LT')} - ${moment(appointment.endTime).format('LT')} </p>
         <p class="location"> Location: ${appointment.location} </p>
-        </div>`
-
+        <input type="hidden" value="${appointmentJSON}">
+        </div>
+        `
         //sorted into the matching list index
         $(`#${listIndex}`).append(appointmentHTML)
     }
@@ -223,10 +229,32 @@ function displayAvailableAppointments() {
 }
 
 //event handler calls this function when user clicks on an appointment
+//
 function clickAppointment(){
-  //this.id = 'selected-appointment'
-  console.log(this)
 
+	var radioSelectedId = $("input[name='app']:checked").val(); //selected appointment of the form app "employeeId:${tutor.employeeId}appIndex:${i}"
+	//radioSelectedId is passed to a function and returns position in tutors array
+	var [employeeId, appIndex] = findAppointmentInArray(radioSelectedId)
+	console.log(radioSelectedId)
+
+	//display Appointment in Preview
+	$('#preview').html(
+		`Tutor Name: ${tutors[employeeId].name}
+		Appointment Info: ${tutors[employeeId].appointments[appIndex].startTime}`);
+}
+
+//radioSelectedId is passed to a function and returns position in tutors array
+//This function first parses radioSelectedId and links it to appointment in array
+//The purpose is to manipulate appointment directly in the array if need be
+//return an array of [employeeId, appIndex]
+function findAppointmentInArray(radioSelectedId){
+	//radioSelectedId is of the form "employeeId:${tutor.employeeId}:appIndex:${i}"
+	let radioParsed = radioSelectedId.split("_");
+	console.log(radioParsed)
+	let employeeId = radioParsed[1];
+	let appIndex = radioParsed[3];
+	console.log(tutors[employeeId].appointments[appIndex])
+	return [employeeId, appIndex];
 }
 
 function displayAvailableAppointmentsCSS() {
