@@ -8,11 +8,30 @@ body{
   flex-wrap: nowrap;
   overflow-x:auto;
 }
-
-#selected-appointment{
-  /* background-color: blueviolet; */
+li > div {
+  margin: 1em;
+  width: 22%;
 }
 
-.appointment-slot:hover{
-  background-color: peachpuff;
+.appointment-slot{
+  background-color: rgba(226, 201, 137, .5);
+}
+
+.selectedAppCSS{
+  background-color: rgb(218, 178, 78);
+}
+
+.selectedAppCSS:hover {
+  background-color: rgb(218, 178, 78);
+}
+
+
+
+.appointment-slot {
+  padding: 1em;
+  border-radius: 10px;
+}
+
+label+input[type="radio"]:checked{
+  background-color: red;
 }

@@ -28,7 +28,7 @@ let tutors = [
 					startTime: new Date(2020, sampleMonth, sampleDay, 10, 0),
 					endTime: new Date(2020, sampleMonth, sampleDay, 10, 20),
 					location: 'BH 3129',
-					description: '',
+					description: 'Jenna Doe has a major in English Language and Literature. She is here to assist and provide practical tips you can apply to your papers',
 					status: 'available',
 					student: '', //insert entire student object here if possible
 				},
@@ -75,7 +75,7 @@ let tutors = [
 					startTime: new Date(2020, sampleMonth, sampleDay, 11, 0),
 					endTime: new Date(2020, sampleMonth, sampleDay, 11, 20),
 					location: 'BH 3129',
-					description: '',
+					description: 'John Smith specializes in Creative Writing and would love to be of assistance.',
 					status: 'available',
 					student: '', //insert entire student object here if possible
 				},
@@ -83,7 +83,7 @@ let tutors = [
 					startTime: new Date(2020, sampleMonth, sampleDay, 12, 20),
 					endTime: new Date(2020, sampleMonth, sampleDay, 12, 40),
 					location: 'BH 3129',
-					description: '',
+					description: 'John Smith specializes in Creative Writing and would love to be of assistance.',
 					status: 'available',
 					student: '', //insert entire student object here if possible
 				},
@@ -91,7 +91,7 @@ let tutors = [
 					startTime: new Date(2020, sampleMonth, sampleDay, 12 + 1, 0),
 					endTime: new Date(2020, sampleMonth, sampleDay, 12+ 1, 20),
 					location: 'BH 3129',
-					description: '',
+					description: 'John Smith specializes in Creative Writing and would love to be of assistance.',
 					status: 'available',
 					student: '', //insert entire student object here if possible
 				},
@@ -123,7 +123,7 @@ let tutors = [
 					startTime: new Date(2020, sampleMonth, sampleDay, 12 + 4, 0),
 					endTime: new Date(2020, sampleMonth, sampleDay, 12 + 4, 20),
 					location: 'BH 3129',
-					description: '',
+					description: 'Shikamaru Nara is an expert in drafting academic articles. He can provide  some guidance on the papers you have been putting off.',
 					status: 'available',
 					student: '', //insert entire student object here if possible
 				},
@@ -131,7 +131,7 @@ let tutors = [
 					startTime: new Date(2020, sampleMonth, sampleDay, 12 + 4, 20),
 					endTime: new Date(2020, sampleMonth, sampleDay, 12 + 4, 40),
 					location: 'BH 3129',
-					description: '',
+					description: 'Shikamaru Nara is an expert in drafting academic articles. He can provide  some guidance on the papers you have been putting off.',
 					status: 'available',
 					student: '', //insert entire student object here if possible
 				},
@@ -139,7 +139,7 @@ let tutors = [
 					startTime: new Date(2020, sampleMonth, sampleDay, 12 + 5, 0),
 					endTime: new Date(2020, sampleMonth, sampleDay, 12 + 5, 20),
 					location: 'BH 3129',
-					description: '',
+					description: 'Shikamaru Nara is an expert in drafting academic articles. He can provide  some guidance on the papers you have been putting off.',
 					status: 'available',
 					student: '', //insert entire student object here if possible
 				},
@@ -176,11 +176,14 @@ button.innerHTML = "Today";
 
 //Event Handler: When date is selected on the mini calendar, value is saved and displayed on the H3 heading
 $('#mini-calendar').on('changeDate', function() {
-  displaySelectedDate()
+	displaySelectedDate();
+	displayAvailableAppointments();
 });
 
 //Display selected date in header
 function displaySelectedDate(){
+
+	//sets value of selected date by getting formatted date of currently selected date on mini calendar
       $('#selected-date-input').val(
         $('#mini-calendar').datepicker('getFormattedDate')
     );
@@ -204,20 +207,30 @@ function miniCalendarToday(){
 
 //Goes through the tutors array, and displays available appointments based on selected day. (It is displayed by generating HTML. This links the DOM and the tutors array
 function displayAvailableAppointments() {
-  let appointmentHTML = '';
+	$('.appointment-li').empty();
+
+	let appointmentHTML = ''
   for (let tutor of tutors) {
       for (let [i, appointment] of tutor.appointments.entries()){
+
+				let selectedDate = $('#selected-date-input')[0].value || new Date(); //either selected date or if nothing selected, gtoday's date
+					console.log("TESTING", selectedDate, "testing")
+				//if the appointment is not on selected date, then skip rendering appointment information. We only want to render appointments of selected day.
+				if (moment(appointment.startTime).format('MMMM Do YYYY') !== moment(selectedDate).format('MMMM Do YYYY')) break;
+
         //match appointment time to list index/id
         let listIndex = moment(appointment.startTime).format('h')
         let appointmentJSON = JSON.stringify(appointment);
 
           appointmentHTML = `
-					<div class="appointment-slot">
-					<input type="radio" id= "employeeId:${tutor.employeeId}:appIndex:${i}" name="app" value="employeeId_${tutor.employeeId}_appIndex_${i}">
+					<div id="div_employeeId_${tutor.employeeId}_appIndex_${i}" class="appointment-slot">
+					<label>
+					<input class="radioButtonClick" type="radio" id= "employeeId:${tutor.employeeId}:appIndex:${i}" name="app" value="employeeId_${tutor.employeeId}_appIndex_${i}">
         <p class="tutor-name"> Tutor: ${tutor.name}</p>
         <p class="time">Time: ${moment(appointment.startTime).format('LT')} - ${moment(appointment.endTime).format('LT')} </p>
         <p class="location"> Location: ${appointment.location} </p>
-        <input type="hidden" value="${appointmentJSON}">
+				<input type="hidden" value="${appointmentJSON}">
+				</label>
         </div>
         `
         //sorted into the matching list index
@@ -225,22 +238,36 @@ function displayAvailableAppointments() {
     }
   }
   //Adds an event handler to each appointment
-  $(`.appointment-slot`).click(clickAppointment)
-}
+	$(`.radioButtonClick`).click(clickAppointment)
+	}
 
 //event handler calls this function when user clicks on an appointment
 //
 function clickAppointment(){
 
+	//removes other highlighted appontments
+	$('div').removeClass('selectedAppCSS')
+
+	//change background color
 	var radioSelectedId = $("input[name='app']:checked").val(); //selected appointment of the form app "employeeId:${tutor.employeeId}appIndex:${i}"
 	//radioSelectedId is passed to a function and returns position in tutors array
 	var [employeeId, appIndex] = findAppointmentInArray(radioSelectedId)
-	console.log(radioSelectedId)
+
+	//adds a class to selected appointment slot so it highlights
+	$(`#div_employeeId_${employeeId}_appIndex_${appIndex}`).addClass('selectedAppCSS')
+
+	let appointment = tutors[employeeId].appointments[appIndex]
 
 	//display Appointment in Preview
 	$('#preview').html(
-		`Tutor Name: ${tutors[employeeId].name}
-		Appointment Info: ${tutors[employeeId].appointments[appIndex].startTime}`);
+		`<p> Tutor Name: <br>${tutors[employeeId].name} </p>
+
+			<p> Appointment Date & Time: <br> ${moment(appointment.startTime).format('dddd, MMMM Do YYYY, h:mm a')} - ${moment(appointment.endTime).format('LT')}
+
+			<p> Location: <br>${appointment.location} </p>
+
+			${appointment.description ? "<p>Description: <br>"+ appointment.description +"</p>": ''}
+			`);
 }
 
 //radioSelectedId is passed to a function and returns position in tutors array
