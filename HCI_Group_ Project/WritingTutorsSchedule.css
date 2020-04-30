@@ -3,16 +3,29 @@ body{
 }
 
 #writing-tutors-section{
+  max-height: 100vh;
   display: grid;
-  grid-template-columns: 75% 25px;
-  grid-template-rows:  repeat('auto-fill');
-
-  grid-template-areas:
-  "header header calendar" // can place . instead to designate an empty cell
-  "schedule schedule content"
-  "schedule schedule book";
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-auto-flow: column;
 }
 
+#selected-date-div { grid-area: 1 / 1 / 2 / 5; }
+#appointment-section { grid-area: 2 / 1 / 6 / 5; }
+#calendar-section { grid-area: 1 / 5 / 3 / 7; }
+#confirm-booking { grid-area: 5 / 5 / 6 / 7; }
+#preview-book-section { grid-area: 3 / 5 / 5 / 7; }
+
+#preview-book-section{
+  align-self: end;
+  max-height: 100%;
+}
+
+#appointment-section{
+  overflow-y:auto
+}
 #appointment-list li {
   display: flex;
   flex-direction: row;
@@ -26,15 +39,19 @@ li > div {
 }
 
 .appointment-slot{
-  background-color: rgba(226, 201, 137, .5);
+  background-color: rgba(117, 229, 242, 0.5);
+}
+
+.appointment-slot:hover{
+  background-color: rgb(111, 188, 255);
 }
 
 .selectedAppCSS{
-  background-color: rgb(218, 178, 78);
+  background-color: rgb(70, 169, 255);
 }
 
 .selectedAppCSS:hover {
-  background-color: rgb(218, 178, 78);
+  background-color: rgb(70, 169, 255);
 }
 
 
@@ -51,3 +68,9 @@ label+input[type="radio"]:checked{
 #book-button{
   margin: 1em;
 }
+
+
+/* #calendar-section{
+  margin-right: auto;
+  margin-left: auto;
+} */
