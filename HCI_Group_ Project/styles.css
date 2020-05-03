@@ -56,3 +56,8 @@ th,td{
     margin: auto;
     display: inline;
 }
+.navbar-nav>li:hover {
+    background-color: #A9C9FF;
+    color: white;
+}
+
