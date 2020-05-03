@@ -17,7 +17,7 @@ let sampleMonth = today.getMonth(); //get current Month
 //notice offset: 3 corresponds to April
 let sampleDay = today.getDate(); // get current day of the Month
 
-console.log(sampleMonth, sampleDay);
+// console.log(sampleMonth, sampleDay);
 
 let tutors = [
 	{
@@ -238,7 +238,7 @@ function displayAvailableAppointments() {
   for (let tutor of tutors) {
       for (let [i, appointment] of tutor.appointments.entries()){
 
-		console.log(tutors)//if the appointment is not available, then do not display it, and move on to next round of the for loop
+		//console.log(tutors)//if the appointment is not available, then do not display it, and move on to next round of the for loop
 								if(appointment.status !== 'available') continue;
 
 				let selectedDate = $('#selected-date-input')[0].value || new Date(); //either set to selected date or if nothing selected on mini calendar, default value is today's date
@@ -255,7 +255,7 @@ function displayAvailableAppointments() {
           appointmentHTML = `
 					<div id="div_employeeId_${tutor.employeeId}_appIndex_${i}" class="appointment-slot">
 					<label>
-					<input class="radioButtonClick" type="radio" id= "employeeId:${tutor.employeeId}:appIndex:${i}" name="app" value="employeeId_${tutor.employeeId}_appIndex_${i}">
+					<input class="radioButtonClick" type="radio" id= "employeeId:${tutor.employeeId}:appIndex:${i}"  name="app" value="employeeId_${tutor.employeeId}_appIndex_${i}" ${tutor.employeeId === 0 && i===0 ? "checked": ""}>
         <p class="tutor-name"> Tutor: ${tutor.name}</p>
         <p class="time">Time: ${moment(appointment.startTime).format('LT')} - ${moment(appointment.endTime).format('LT')} </p>
         <p class="location"> Location: ${appointment.location} </p>
@@ -264,11 +264,13 @@ function displayAvailableAppointments() {
         </div>
         `
         //sorted into the matching list index
-        $(`#${listIndex}`).append(appointmentHTML)
+				$(`#${listIndex}`).append(appointmentHTML)
     }
   }
   //Adds an event handler to each appointment
 	$(`.radioButtonClick`).click(clickAppointment)
+	//have one radio button checked by default to prevent errors
+
 	}
 
 //event handler calls this function when user clicks on an appointment
@@ -290,34 +292,34 @@ function clickAppointment(){
 
 	//display Appointment in Preview
 	$('#preview').html(
-		`<p> Tutor Name: <br>${tutors[employeeId].name} </p>
+		`<p> Appointment Preview: </p>
+		<div class="flex-tutor-location">
+		<p> Tutor Name: <br>${tutors[employeeId].name} </p>
 
+		<p> Location: <br>${appointment.location} </p>
+		</div>
 			<p> Appointment Date & Time: <br> ${moment(appointment.startTime).format('dddd, MMMM Do YYYY, h:mm a')} - ${moment(appointment.endTime).format('LT')}
-
-			<p> Location: <br>${appointment.location} </p>
-
 			${appointment.description ? "<p>Description: <br>"+ appointment.description +"</p>": ''}
 			<br>
-
 			`);
 }
 
 //radioSelectedId is passed to a function and returns position in tutors array
 //This function first parses radioSelectedId and links it to appointment in array
 //The purpose is to manipulate appointment directly in the array if need be
-//return an array of [employeeId, appIndex, appointment]
+//return an array of [employeeId, appIndex, appointment, name]
 function findAppointmentInArray(){
 	//radioSelectedId is of the form "employeeId:${tutor.employeeId}:appIndex:${i}"
 	var radioSelectedId = $("input[name='app']:checked").val();
 	let radioParsed = radioSelectedId.split("_");
-	console.log(radioParsed)
+	//console.log(radioParsed)
 	let employeeId = radioParsed[1];
 	let appIndex = radioParsed[3];
-	console.log(tutors[employeeId].appointments[appIndex])
+	//console.log(tutors[employeeId].appointments[appIndex])
 	let appointment = tutors[employeeId].appointments[appIndex]
-	return [employeeId, appIndex, appointment];
+	let name = tutors[employeeId].name;
+	return [employeeId, appIndex, appointment, name];
 }
-
 
 function bookAppointment(){
 
@@ -325,11 +327,8 @@ function bookAppointment(){
 	appointment.status = 'booked'
 	displayAvailableAppointments();
 
-
-
-	$('#confirm-booking').html(`Your appointment has been booked! Check your email for confirmation.
+	$('#modal-appointment-info').html(`Your appointment has been booked! Check your email for confirmation.
 	You are booked with ${tutors[employeeId].name} on ${moment(appointment.startTime).format('dddd, MMMM Do, YYYY')} between ${moment(appointment.startTime).format('LT')}- ${moment(appointment.endTime).format('LT')}
-
 	`);
 }
 
@@ -352,3 +351,56 @@ displayAvailableAppointments();
 
 
 });
+
+function confirmAppointment(){
+	window.confirm("Are you sure you would like to book this appointment?")
+}
+
+/**Source code: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal */
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("book-button");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+	displayModal();
+
+	let [employeeId, appIndex, appointment, name] = findAppointmentInArray();
+
+	$('#modal-appointment-info').html(
+		`<p> Appointment Preview: </p>
+		<p> Tutor Name: <br>${tutors[employeeId].name} </p>
+		<p> Location: <br>${appointment.location} </p>
+			<p> Appointment Date & Time: <br> ${moment(appointment.startTime).format('dddd, MMMM Do YYYY, h:mm a')} - ${moment(appointment.endTime).format('LT')}
+			${appointment.description ? "<p>Description: <br>"+ appointment.description +"</p>": ''}
+			<br>
+			`);
+
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+	modal.style.display = "none";
+
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+		modal.style.display = "none";
+  }
+}
+
+function cancelModal(){
+	modal.style.display = "none";
+}
+
+function displayModal(){
+	modal.style.display = "block";
+}

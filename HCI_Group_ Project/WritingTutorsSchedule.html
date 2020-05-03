@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="bootstrap-datepicker/css/bootstrap-datepicker3.css">
     <link rel="stylesheet" href="bootstrap-datepicker/css/bootstrap-datepicker3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 
 </head>
 
@@ -92,15 +94,39 @@
   <div id="book-section">
 
   </div> -->
-  <div id="confirm-booking"> </div>
+  <div id="preview">
 
-  <div id="preview-book-section">
-        <div id="preview">
+  </div>
 
-        </div>
-        <button id="book-button" onclick="bookAppointment();return false;" >Book Appointment</button>
-   </div>
+  <!-- <div id="book-button" class="link">
+    <a  class ="btn btn-primary"  role="button" onclick="bookAppointment();return false;">Book Appointment</a>
+  </div> -->
+
+  <div id="book-button" class="link">
+    <a  class ="btn btn-primary"  role="button" >Book Appointment</a>
+  </div>
+
+ </div>
+
+
+<div id="confirm-booking"> </div>
+
+
+<!-- The Modal https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Are you sure you would like to book the following appointment?</h3>
+    <p id="modal-appointment-info"></p>
+    <button onclick="bookAppointment()" type="button" class="btn btn-success"> Book Appointment </button>
+    <button onclick="cancelModal()" type="button" class="btn btn-default"> Cancel </button>
+  </div>
+
 </div>
+
+
 
      <script src="bootstrap-datepicker/js/bootstrap-datepicker.js" async defer></script>
      <script src="bootstrap-datepicker/js/bootstrap-datepicker.min.js" async defer></script>
