@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Contact Us</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles2.css">
+    <link rel="stylesheet" type="text/css" href="Style2.css">
+    <title>Contact Us</title>
 </head>
 
 <body>
     <nav class="navbar navbar-default">
         <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <!--Create a Span-->
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
@@ -23,12 +27,17 @@
                 </button>
                 <a class="navbar-brand" href="LearningCenterHome.html">BCLC</a>
             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                  <li><a href="AboutUs.html">About Us</a></li>
+                    <!-- <li class="active"><a href="LearningCenterHome.html">Home <span class="sr-only">(current)</span></a>
+                    </li> -->
+                    <li><a href="AboutUs.html">About Us</a></li>
                     <li><a href="TutoringSchedule.html">Schedule</a></li>
                     <li><a href="WritingTutorsSchedule.html">Writing Tutors</a></li>
                     <li><a href="ContactUsLC.html">Contact Us</a></li>
+
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="tutorform.html">Become Tutor</a></li>
@@ -36,78 +45,133 @@
                 </ul>
                 </li>
                 </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <section class="contact-page-sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-map-marked"></i>
+                            </div>
+                            <div class="contact-info-text">
+                                <h2>Brooklyn College Learning Center</h2>
+                                <span>1300 Boylan Hall</span>
+                                <span>Brooklyn, New York 11210</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-info-text">
+                                <h2>office time</h2>
+                                <span>Monday - Friday 10:00 am - 8.00 pm</span>
+                                <span>Saturday - Sunday 12:00 am - 4.00 pm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-info-text">
+                                <h2>Phone Number</h2>
+                                <a href="tel:7189515821">718-951-5821</a><br />
+                                <a href="fax:7189514130">718-951-4130</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="contact-info">
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-info-text">
+                                <h2>E-Mail Address</h2>
+                                <a href="email:lc@brooklyn.cuny.edu">lc@brooklyn.cuny.edu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="contact-page-form" method="post">
+                        <h2>Information About You</h2>
+                        <form action="contact-mail.php" method="post">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-input-field">
+                                        <input type="text" placeholder="First Name" name="name" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-input-field">
+                                        <input type="text" placeholder="Last Name" name="name" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-input-field">
+                                        <input type="email" placeholder="yourname@domain.com" name="email" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-input-field">
+                                        <input type="text" placeholder="Phone Number" name="phone" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-input-field">
+                                        <input type="text" placeholder="Empild ID" name="ID" />
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="single-input-field">
+                                        <input type="text" placeholder="Major" name="subject" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12 message-input">
+                                    <div class="single-input-field">
+                                        <textarea placeholder="Write Your Message" name="message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="single-input-fieldsbtn">
+                                    <input type="submit" value="Send Now" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="contact-page-map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.9733879772602!2d-73.95430168474515!3d40.630468850536566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0e68bf8bc1%3A0x487ac68137fac784!2sBrooklyn%20College!5e0!3m2!1sen!2sus!4v1588537059908!5m2!1sen!2sus"
+                            width="450" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+                            aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div>
             </div>
         </div>
-    </nav>
-    <div>
-        <h1>Contact Us</h1>
-    </div>
-     <div class="container form">
-        <div class="row">
-           <div class="col-md-7">
-              <div class="row">
-                 <div class="form-group col-md-12">
-                    <h2>Information About You</h2>
-                 </div>
-              </div>
-              <div class="row">
-                 <div class="col-md-12">
-                    <div class="control-group">
-                       <label>First Name :</label>
-                       <input type="text" class="demo-default form-control" placeholder="First Name">
-                    </div>
-                    <div class="control-group">
-                       <label>Last Name :</label>
-                       <input type="text" class="demo-default form-control" placeholder="Last Name">
-                    </div>
-                    <div class="control-group">
-                       <label>Emplid ID :</label>
-                       <input type="text" class="demo-default form-control" placeholder="Emplid">
-                    </div>
-                    <div class="control-group">
-                       <label>Phone #</label>
-                       <input type="text" class="demo-default form-control" placeholder="Phone #">
-                    </div>
-                    <div class="control-group">
-                       <label>Email :</label>
-                       <input type="text" class="demo-default form-control" placeholder="yourname@domain.com">
-                    </div>
-                    <div class="control-group">
-                       <label for="select-beast">Major :</label>
-                       <select id="select-beast" class="demo-default" placeholder="Select a service...">
-                          <option value="">Accounting</option>
-                          <option value="4">Business Management</option>
-                          <option value="1">Computer Science</option>
-                          <option value="3">Economics</option>
-                          <option value="5">Psychology</option>
-                       </select>
-                    </div>
-                 </div>
-              </div>
-              <br>
-              <div class="row">
-                 <div class="form-group col-md-12 text-center">
-                    <input type="submit" class="btn btn-primary" value="Contact Us">
-                    <!--onClick="javascript:JSFiddleSubmit();return false;"-->
-                 </div>
-              </div>
-              </form>
-           </div>
-
-           <div class="col-md-5 contact-right-info">
-              <h3>BC learning Center Office</h3>
-              <p style="color: #000000">1300 Boylan Hall<br />
-                 Brooklyn, New York<br/>
-                 <a href="tel:7189515821">718-951-5821</a>
-              </p>
-              <h3>Email Address</h3>
-              <a href="mailto:lc@brooklyn.cuny.edu">lc@brooklyn.cuny.edu</a>
-
-              <h3>Fax telephone</h3>
-              <a href="fax:7189514130">718-951-4130</a><br/>
-              <h3>Richard vento</h3>Director
-           </div>
-        </div>
-     </div>
+    </section>
 </body>
+
 </html>
