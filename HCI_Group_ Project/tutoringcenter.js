@@ -6,14 +6,18 @@ var user = document.getElementById("username");
 var pass = document.getElementById("password");
  	localStorage.setItem("userN", user.value);
   	localStorage.setItem("passW", pass.value);
-
+  	//Using LOCALstorage, saves information of "Create Account" into local browser
+  	localStorage.setItem("register_firstN", document.getElementById("primero").value);
+  	localStorage.setItem("register_lastN", document.getElementById("ultimo").value);
+  	localStorage.setItem("register_email", document.getElementById("email").value);
+  	localStorage.setItem("register_major", document.getElementById("inputGroupSelect01").options[document.getElementById("inputGroupSelect01").selectedIndex].text);
   	//Checking if info gets saved 
   	//console.log(localStorage.getItem("userN"));
   	//console.log(localStorage.getItem("passW"));
   	successRegister();
   	return false;
 }
-
+//For Login Page Verification.
 function check(thisForm){
 	
 	console.log(localStorage.getItem("passW"));
@@ -28,7 +32,7 @@ function check(thisForm){
 	if( l_user == localStorage.getItem("userN") && l_pass == localStorage.getItem("passW")  )
 	{
 		console.log("Hello");
-		swal("Login Successful", 
+		swal("Login Successful. Wait a few seconds, redirecting to Home Page.", 
 		{ 	icon: "success",
 			title: "Success",
 		});
