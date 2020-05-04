@@ -13,16 +13,19 @@
     <title>Contact Us</title>
 
     <script type="text/javascript">
-        function autoFill(){
+        function autoFill() {
             document.getElementById("fN").value = localStorage.getItem("register_firstN");
             document.getElementById("lN").value = localStorage.getItem("register_lastN");
             document.getElementById("email").value = localStorage.getItem("register_email");
             document.getElementById("major").value = localStorage.getItem("register_major");
+            document.getElementById("id").value = localStorage.getItem("register_id");
+            document.getElementById("phoneN").value = localStorage.getItem("register_phoneN");
+            document.getElementById("message").value = localStorage.getItem("register_message");
             return false;
         }
     </script>
     <style type="text/css">
-        .btn-block{
+        .btn-block {
             width: 25%;
         }
     </style>
@@ -146,17 +149,18 @@
 
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="single-input-field">
-                                        <input type="email" placeholder="yourname@domain.com" name="email" id="email" required />
+                                        <input type="email" placeholder="yourname@domain.com" name="email" id="email"
+                                            required />
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="single-input-field">
-                                        <input type="text" placeholder="Phone Number" name="phone" />
+                                        <input type="text" placeholder="Phone Number" name="phone" id="id" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div class="single-input-field">
-                                        <input type="text" placeholder="Empild ID" name="ID" />
+                                        <input type="text" placeholder="Empild ID" name="ID" id="phoneN" />
                                     </div>
                                 </div>
 
@@ -167,7 +171,8 @@
                                 </div>
                                 <div class="col-md-12 message-input">
                                     <div class="single-input-field">
-                                        <textarea placeholder="Write Your Message" name="message"></textarea>
+                                        <textarea placeholder="Write Your Message" name="message"
+                                            id="message" /></textarea>
                                     </div>
                                 </div>
                                 <div class="single-input-fieldsbtn">
@@ -177,14 +182,16 @@
                         </form>
                     </div>
                 </div>
-            <!-- </div>  --> <!--  temp -->
-           <!--  <div class="row"> --><!--  temp -->
+                <!-- </div>  -->
+                <!--  temp -->
+                <!--  <div class="row"> -->
+                <!--  temp -->
                 <div class="col-md-4">
                     <div class="contact-page-map">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.9733879772602!2d-73.95430168474515!3d40.630468850536566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b0e68bf8bc1%3A0x487ac68137fac784!2sBrooklyn%20College!5e0!3m2!1sen!2sus!4v1588537059908!5m2!1sen!2sus"
-                            width="360" height="450" frameborder="0" style="border:0;border-radius: 4px;" allowfullscreen=""
-                            aria-hidden="false" tabindex="0"></iframe>
+                            width="360" height="450" frameborder="0" style="border:0;border-radius: 4px;"
+                            allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
                 </div>
             </div> <!-- div row -->
