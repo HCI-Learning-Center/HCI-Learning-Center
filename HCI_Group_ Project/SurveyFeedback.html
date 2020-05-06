@@ -56,9 +56,9 @@
         text-align: center;
         padding-bottom: 2%;
     }
-    .wholeForm {
-        background: rgb(255,0,0);
-        color: green;
+    body {
+        background: rgb(223, 53, 75);
+    color:white;
     }
     .submit {
         padding-left: 640px;
@@ -105,7 +105,7 @@
 
             function submitButton() {
                 
-            var input1 = document.getElementById("date").value;
+            var input1 = document.getElementById("tutorName").value;
             var input2 = document.getElementById("courseNumber").value;
             // var input3 = document.getElementById("tutorName").value;
             // var input4 = document.getElementById("satisfaction").value;
@@ -123,18 +123,15 @@
                 return
             }
         }
-   // }
+        
+ // }
           </script>
           <div class = "wholeForm">
     <div class = "surveyHeader"><h2>Feedback Survey!</h2></div>
     <div class = "forms">
         
             <form id="form" method="POST" onsubmit="alert('Submitted!'); return false">
-                <div class = "dates">
-               Date <br>
-                <input type = "date" name = "date" id = "date" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton() required> <br>
-            </div>
-            
+               
         
         <div class = "course">
             Course you got tutored in <br>
