@@ -31,3 +31,11 @@ h3{
 .image-max{
     width: 100%;
 }
+
+.scheduleTable{
+    width: 95%;
+}
+#schedule-thead>tr>th{
+    background-color: #f08080;
+    border-bottom-color: black;
+}

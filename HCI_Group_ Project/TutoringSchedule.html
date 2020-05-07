@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Tutoring Schedle</title>
+    <title>Tutoring Schedule</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="Signup.css"> -->
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
@@ -31,15 +31,15 @@
             width: 95%;
 
         }
-        
+
         td{
             padding: 4px;
         }
         .table-hover tbody tr:hover td {
-            background: gray;
+            background: lightgray;
         }
         .table-hover tbody tr:hover th{
-            background:gray;
+            background:lightgray;
         }
 
         .scheduleTable {
@@ -90,11 +90,11 @@
         <a class ="btn btn-primary" href="tutorform.html" role="button">Sign Up to be a Tutor Today!</a>
     </div>
     <div class="scheduleTable" >
-        <table cellpadding="10" class="table-hover">
+        <table  class="table-hover table .table-responsive">
             <colgroup>
                 <col span="12">
             </colgroup>
-
+            <thead id="schedule-thead" border-bottom-color="black">
             <tr>
                 <th>Class</th>
                 <th>Sunday</th>
@@ -105,6 +105,7 @@
                 <th>Friday</th>
                 <th>Saturday</th>
             </tr>
+            </thead>
             <tr>
                 <td><b>ACCT 2001</b></td>
                 <td></td>
@@ -170,8 +171,8 @@
             <tr>
                 <td><b>BIOL 1010</b></td>
                 <td></td>
-                <td>2 PM - 4 PM <b>&</b> 6 PM - 8 PM</td>
-                <td>12 PM - 2 PM <b>&</b> 4 PM - 5 PM</td>
+                <td>2 PM - 4 PM <br> 6 PM - 8 PM</td>
+                <td>12 PM - 2 PM <br> 4 PM - 5 PM</td>
                 <td>11 AM - 12 PM</td>
                 <td></td>
                 <td></td>
@@ -228,12 +229,12 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr></tr>
+            <tr>
             <td><b>CHEM 2100</b></td>
             <td></td>
             <td>6 PM - 8 PM</td>
             <td>1 PM - 3 PM</td>
-            <td>11 AM - 12 PM <b>&</b> 4 PM - 6 PM</td>
+            <td>11 AM - 12 PM <br> 4 PM - 6 PM</td>
             <td>12 PM - 2 PM</td>
             <td>2 PM - 3 PM</td>
             <td></td>
@@ -267,10 +268,10 @@
             <tr>
                 <td><b>CISC 1115</b></td>
                 <td></td>
-                <td>10 AM - 12PM, 1 PM - 2 PM <b>&</b> 3 PM - 4 PM</td>
-                <td>12 PM - 2 PM <b>&</b> 4 PM - 5 PM</td>
+                <td>10 AM - 12PM <br> 1 PM - 2 PM <br> 3 PM - 4 PM</td>
+                <td>12 PM - 2 PM <br> 4 PM - 5 PM</td>
                 <td>2 PM - 4 PM</td>
-                <td>12 PM - 1 PM <b>&</b> 3 PM - 5 PM</td>
+                <td>12 PM - 1 PM <br> 3 PM - 5 PM</td>
                 <td> 10 AM - 12 PM </td>
                 <td></td>
 
@@ -278,8 +279,8 @@
             <tr>
                 <td><b>CISC 3115</b></td>
                 <td></td>
-                <td>1 PM - 3 PM <b>&</b> 4 PM - 5 PM</td>
-                <td>12 PM - 2 PM <b>&</b> 5 PM - 6 PM</td>
+                <td>1 PM - 3 PM <br> 4 PM - 5 PM</td>
+                <td>12 PM - 2 PM <br> 5 PM - 6 PM</td>
                 <td>4 PM - 6 PM</td>
                 <td>1 PM - 2 PM</td>
                 <td> 12 PM - Í2 PM </td>
@@ -303,7 +304,7 @@
                 <td></td>
                 <td>5 PM - 6 PM </td>
                 <td>11 AM - 1 PM</td>
-                <td>11 AM - 12 PM <b>&</b> 5 PM - 6 PM</td>
+                <td>11 AM - 12 PM <br> 5 PM - 6 PM</td>
                 <td>1 PM - 2 PM</td>
                 <td>10 AM - 12 PM </td>
                 <td></td>
@@ -326,7 +327,7 @@
                 <td></td>
                 <td>3 PM - 5 PM </td>
                 <td>5 PM - 6 PM</td>
-                <td> 10 AM - 11 AM <b>&</b> 2 PM - 3 PM</td>
+                <td> 10 AM - 11 AM <br> 2 PM - 3 PM</td>
                 <td>1 PM - 2 PM</td>
                 <td>11 AM - 12 PM</td>
                 <td></td>
@@ -338,7 +339,7 @@
                 <td>4 PM - 6 PM </td>
                 <td>1 PM - 3 PM</td>
                 <td>11 AM - 1 PM</td>
-                <td> 11 AM - 12 M <b>&</b> 2 PM - 3 PM</td>
+                <td> 11 AM - 12 M <br> 2 PM - 3 PM</td>
                 <td></td>
                 <td></td>
 
@@ -357,7 +358,7 @@
             <tr>
                 <td><b>MATH 1401</b></td>
                 <td></td>
-                <td>11 AM - 12 PM <b>&</b> 7 PM - 8 PM</td>
+                <td>11 AM - 12 PM <br> 7 PM - 8 PM</td>
                 <td>12 PM - 2 PM</td>
                 <td>3 PM - 5 PM</td>
                 <td>6 PM - 8 PM</td>
@@ -367,7 +368,7 @@
             <tr>
                 <td><b>MATH 1406</b></td>
                 <td></td>
-                <td>11 AM - 12 PM <b>&</b> 7 PM - 8 PM</td>
+                <td>11 AM - 12 PM <br> 7 PM - 8 PM</td>
                 <td>12 PM - 2 PM</td>
                 <td>3 PM - 5 PM</td>
                 <td>6 PM - 8 PM</td>
@@ -380,7 +381,7 @@
                 <td>12 PM - 4 PM</td>
                 <td>11 AM - 6 PM</td>
                 <td>11 AM - 3 PM</td>
-                <td>12 PM - 1 PM <b>&</b> 2 PM - 4 PM</td>
+                <td>12 PM - 1 PM <br> 2 PM - 4 PM</td>
                 <td>11 AM - 4 PM</td>
                 <td>12 PM - 3 PM</td>
                 <td>12 PM - 4 PM</td>
@@ -388,9 +389,9 @@
             <tr>
                 <td><b>MATH 1201</b></td>
                 <td>12 PM - 4 PM</td>
-                <td>12 PM - 1 PM <b>,</b> 4 PM - 5 PM <b>&</b> 6 PM - 8 PM</td>
-                <td>12 PM - 2PM <b>&</b> 3 PM - 4 PM</td>
-                <td>1 PM - 2 PM <b>&</b> 4 PM - 6 PM</td>
+                <td>12 PM - 1 PM <br> 4 PM - 5 PM <br> 6 PM - 8 PM</td>
+                <td>12 PM - 2PM <br> 3 PM - 4 PM</td>
+                <td>1 PM - 2 PM <br> 4 PM - 6 PM</td>
                 <td>11 AM - 3 PM</td>
                 <td>10 AM - 12 PM</td>
                 <td>12 PM - 4 PM</td>
@@ -399,10 +400,10 @@
             <tr>
                 <td><b>MATH 1206</b></td>
                 <td>12 PM - 4 PM</td>
-                <td>12 PM - 1 PM <b>&</b> 2 PM - 5 PM</td>
-                <td>11 AM - 2 PM <b>&</b> 3 PM - 4 PM</td>
-                <td>1 PM - 2 PM <b>&</b> 3 PM - 6 PM</td>
-                <td>10 AM - 3 PM <b>&</b> 1 PM - 3 PM</td>
+                <td>12 PM - 1 PM <br> 2 PM - 5 PM</td>
+                <td>11 AM - 2 PM <br> 3 PM - 4 PM</td>
+                <td>1 PM - 2 PM <br> 3 PM - 6 PM</td>
+                <td>10 AM - 3 PM <br> 1 PM - 3 PM</td>
                 <td>11 AM - 1 PM</td>
                 <td>12 PM - 4 PM</td>
             </tr>
@@ -446,10 +447,10 @@
             <tr>
                 <td><b>PHYS 1005</b></td>
                 <td></td>
-                <td>1 PM - 2 PM <b>&</b> 6 PM - 7 PM</td>
-                <td>12 PM - 1 PM <b>&</b> 4 PM - 5 PM</td>
+                <td>1 PM - 2 PM <br> 6 PM - 7 PM</td>
+                <td>12 PM - 1 PM <br> 4 PM - 5 PM</td>
                 <td>3 PM - 4 PM</td>
-                <td>11 AM - 12 PM <b>&</b> 5 PM - 6 PM</td>
+                <td>11 AM - 12 PM <br> 5 PM - 6 PM</td>
                 <td>2 PM - 3 PM</td>
                 <td></td>
             </tr>
@@ -469,8 +470,8 @@
             <tr>
                 <td><b>PHYS 2100</b></td>
                 <td></td>
-                <td>10 AM - 11 AM <b>&</b> 5 PM - 6 PM</td>
-                <td>1 PM - 2 PM <b>&</b> 4 PM - 5 PM</td>
+                <td>10 AM - 11 AM <br> 5 PM - 6 PM</td>
+                <td>1 PM - 2 PM <br> 4 PM - 5 PM</td>
                 <td>12 PM - 1 PM</td>
                 <td>4 PM - 6 PM</td>
                 <td>1 PM - 2 PM</td>
@@ -491,9 +492,9 @@
                 <td><b>PSYC 3400</b></td>
                 <td></td>
                 <td>3 PM - 5 PM</td>
-                <td>10 AM - 12 PM <b>&</b> 3 PM - 5 PM</td>
+                <td>10 AM - 12 PM <br> 3 PM - 5 PM</td>
                 <td></td>
-                <td> 12 PM - 2 PM <b>&</b> 4 PM - 5 PM</td>
+                <td> 12 PM - 2 PM <br> 4 PM - 5 PM</td>
                 <td>11 AM - 1 PM </td>
                 <td></td>
 
