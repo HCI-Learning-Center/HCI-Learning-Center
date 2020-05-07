@@ -144,3 +144,7 @@ section {
 .nav-logo{
     padding: .3em;
 }
+
+.nav-logo:hover {
+    padding: .3em;
+}
