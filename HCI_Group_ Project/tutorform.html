@@ -17,7 +17,7 @@
      <link rel="stylesheet" type="text/css" href="styles2.css">
     <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
 
-<script src="tutorform.js" defer> </script>	
+<script src="tutorform.js" defer> </script>
 
 <style type="text/css">
 	 .login-form {
@@ -38,12 +38,12 @@
         min-height: 38px;
         border-radius: 2px;
     }
-    .btn {        
+    .btn {
         font-size: 15px;
         font-weight: bold;
        }
     .formcontrol, .form-footer{
-       
+
         background: #ecf0f1;
         border-color: #dee4e7;
         text-align: center;
@@ -56,7 +56,7 @@
 
      input[type=tel] {
     	width: 30% ;
-    	display: inline-flex ; 
+    	display: inline-flex ;
 
     }
      .flex-box{
@@ -94,7 +94,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="LearningCenterHome.html">BCLC</a>
+								<a class="navbar-left" href="LearningCenterHome.html"><img class= "nav-logo" src="assets/bclc-logo-v.png"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -107,7 +107,7 @@
                     <li><a href="WritingTutorsSchedule.html">Writing Tutors</a></li>
                     <li><a href="ContactUsLC.html">Contact Us</a></li>
                     <li><a href="SurveyFeedback.html">Feedback</a></li>
-                    
+
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="tutorform.html">Become Tutor</a></li>
@@ -125,33 +125,33 @@
 	<!-- <a href="#" onclick="toggleCheck()">Click to autofill</a> -->
 <form method="get"  onsubmit="setShit(); return false;">
 
-	<h2>Become a tutor!</h2> 
+	<h2>Become a tutor!</h2>
 
 	<div class="form-group has-feedback" id="f1"  >
 		<label for="signup_firstname">First Name</label>
 	   	<input type="text" name="firstname" class="form-control"placeholder="First Name" id="signup_firstname" pattern="[A-Za-z]{1,15}" minlength="1" oninvalid="this.setCustomValidity('Enter alphabet characters (a-z, A_Z)')"   oninput="this.setCustomValidity('')"   onblur="visualValidation(this.id, 'f1', 'helpBlock1')" onchange="removeVisual('f1', 'helpBlock1');showGlyphicon('SuccessGlyphicon1','ErrorGlyphicon1', 'f1', this.id); "value="" aria-describedby="helpBlock1" required>
 
 	   	<span id="helpBlock1" class="help-block" style="display:none">Required. Alphabet characters only.</span>
-		<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="SuccessGlyphicon1"></span> 
+		<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="SuccessGlyphicon1"></span>
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" style="visibility: hidden" id="ErrorGlyphicon1"></span>
 	</div>
 
 	<div class="form-group has-feedback" id="L2">
 		<label for="signup_lastname">Last Name</label>
-		<input type="text" name="firstname" class="form-control"placeholder="Last Name" id="signup_lastname" pattern="[A-Za-z]{1,15}" minlength="1" oninvalid="this.setCustomValidity('Enter alphabet characters (a-z, A_Z)')"   oninput="this.setCustomValidity('')" onblur="visualValidation(this.id, 'L2','helpBlock2')" onchange="removeVisual('L2','helpBlock2');showGlyphicon('SuccessGlyphicon2','ErrorGlyphicon2', 'L2', this.id);" value="" aria-describedby="helpBlock2" required> 
-		
+		<input type="text" name="firstname" class="form-control"placeholder="Last Name" id="signup_lastname" pattern="[A-Za-z]{1,15}" minlength="1" oninvalid="this.setCustomValidity('Enter alphabet characters (a-z, A_Z)')"   oninput="this.setCustomValidity('')" onblur="visualValidation(this.id, 'L2','helpBlock2')" onchange="removeVisual('L2','helpBlock2');showGlyphicon('SuccessGlyphicon2','ErrorGlyphicon2', 'L2', this.id);" value="" aria-describedby="helpBlock2" required>
+
 		<span id="helpBlock2" class="help-block" style="display:none">Required. Alphabet characters only.</span>
-		<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="SuccessGlyphicon2"></span> 
+		<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="SuccessGlyphicon2"></span>
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" style="visibility: hidden" id="ErrorGlyphicon2"></span>
 	</div>
 
 	<div class="form-group has-feedback" id="emailStyle">
-		<label for="preferred_email">Preferred Email:</label>   
+		<label for="preferred_email">Preferred Email:</label>
 		<input type="email" name="email" id="preferred_email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" class="form-control" onblur="visualValEmail(this.id, 'emailStyle', 'helpBlockEmail')" onchange="removeVisual('emailStyle','helpBlockEmail');showGlyphicon('SuccessGlyphicon3','ErrorGlyphicon3','emailStyle', this.id);" aria-describedby="helpEmail" required>
-		
+
 		<span id="helpBlockEmail" class="help-block" style="display:none">Required. Enter valid email: example@mail.com.</span>
 
-		<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="SuccessGlyphicon3"></span> 
+		<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="SuccessGlyphicon3"></span>
         <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true" style="visibility: hidden" id="ErrorGlyphicon3"></span>
 	</div>
 
@@ -172,7 +172,7 @@
 
 	<label class="container text-center status_style ">Select the one that applies:</label>
 		<div class="form-group text-left has-error" id="currentStatus" >
-			
+
 			<label for="current_stu" >Current Student</label>
 			<input type="radio" name="status" id="current_stu" value="current_stu" > <br>
 
@@ -184,11 +184,11 @@
 
 			<label for="other">Other</label>
 			<input type="radio" name="status" id="other" value="other"><br>
-			
+
 			<span id="helpBlockStatus" class="help-block" style="display:block">Select one please</span>
-			
-		</div>	
-	
+
+		</div>
+
 
 	<div class="form-group course_style">
 		<label>Please list the courses you can teach, click yes to add more courses (May apply for 3 courses max)</label>
@@ -206,17 +206,17 @@
 
 		<div id="ifYes" style="display: none;" class="text-center" id="C2">
 			Course 2<input type="text" name="course_2" id="course_2" class="form-control"> <br>
-			
+
 			Add third Course? Yes <input type="radio"  onclick="addField2(document.getElementById('ifYes2').id);" name="yesno2" id="yes2" value="yes">
 			No <input type="radio" onclick="addField2(document.getElementById('ifYes2').id);" name="yesno2" id="no" value="no">
 		</div>
 
 		<div id="ifYes2" style="display: none" class="text-center" id="C3">
-			Course 3<input type="text" name="course_3" id="course_3" class="form-control"><br> 
+			Course 3<input type="text" name="course_3" id="course_3" class="form-control"><br>
 		</div>
 
 	</div>
-	
+
 	<div class="form-group input-group mb-3 ">
 		<div class="input-group-prepend" class="input-group-text ">
 			<label for="days_available">What days are you able to tutor?</label>
@@ -228,14 +228,14 @@
 				<option value="Thur">Thursday</option>
 				<option value="Fri">Friday</option>
 				<option value="Sat">Saturday</option>
-			</select>	
-	-->	
+			</select>
+	-->
 			<div class="checkbox" value="" >
 				<input type="checkbox" name="days_available" value="Mon"> Monday
-			</div>	
+			</div>
 			<div class="checkbox">
 				<input type="checkbox" name="days_available" value="Tues"> Tuesday
-			</div>	
+			</div>
 			<div class="checkbox">
 				<input type="checkbox" name="days_available" value="Thur"> Thursday
 			</div>
@@ -244,7 +244,7 @@
 			</div>
 			<div class="checkbox" >
 				<input type="checkbox" name="days_available" value="Fri"> Friday
-			</div>	
+			</div>
 			<div class="checkbox" >
 				<input type="checkbox" name="days_available" value="Sat"> Saturday
 			</div>
@@ -252,19 +252,19 @@
 		<div class="" id="dayMessage">
 		<span id="helpBlockDays" class="help-block" style="display: none">Select at least one day that you are able to tutor </span>
 		</div>
-	</div>	
-	
+	</div>
+
 
 	<div class="form-group input-group mb-3" id="timeId">
 		<label for="time_available" aria-describedby="helpBlockTime">What times are you able to tutor?</label>
-		<br><small id="time-Help" class="form-text text-muted">For multiple selections: Hold 'CTRL' or 'Command' on keyboard while clicking simultaneously.</small> 
+		<br><small id="time-Help" class="form-text text-muted">For multiple selections: Hold 'CTRL' or 'Command' on keyboard while clicking simultaneously.</small>
 		<select class="form-control" multiple=""  id="time_available">
 			<option name="time_available" value="no_val" disabled>Choose...</option>
 			<option name="time_available" value="Mornings">Mornings</option>
 			<option name="time_available" value="Afternoon">Afternoons</option>
 			<option  name="time_available"value="Evening">Evenings</option>
 		</select>
-		<span id="#helpBlockTime" class="help-block" style="display: none;">Select at least one time you'll be able to tutor.</span>	
+		<span id="#helpBlockTime" class="help-block" style="display: none;">Select at least one time you'll be able to tutor.</span>
 	</div>
 
 	<div class=" form-group has-feedback" id="potential_style">
@@ -288,7 +288,7 @@
 		<textarea id="text_box" class="form-control" maxlength="500" wrap="soft"></textarea>
 		<span id="helpBlockTextArea" class="help-block" style="display: none">We would love to know able your experiences</span>
 		<span id="helpBlockTextArea2" class="help-block" style="display: none">Thank you!</span>
-	
+
 	</div>
 
 	<div class="form-group">
@@ -301,7 +301,7 @@
 	</div>
 
 </div>
-		
+
 </form>
 
 </body>

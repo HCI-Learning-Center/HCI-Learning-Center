@@ -24,7 +24,7 @@
         padding-left: 640px;
         padding-bottom: 3%;
     }
-    
+
     .nameOfTutor {
         padding-left: 640px;
         padding-bottom: 3%;
@@ -73,6 +73,11 @@
         padding-left: 640px;
         padding-bottom: 3%;
     }
+
+    .nav-logo{
+    padding: .3em;
+}
+
 </style>
 
 <body>
@@ -87,7 +92,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="LearningCenterHome.html">BCLC</a>
+                <a class="navbar-left" href="LearningCenterHome.html"><img class= "nav-logo" src="assets/bclc-logo-v.png"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -100,7 +105,7 @@
                     <li><a href="WritingTutorsSchedule.html">Writing Tutors</a></li>
                     <li><a href="ContactUsLC.html">Contact Us</a></li>
                     <li><a href="SurveyFeedback.html">Feedback</a></li>
-                    
+
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="tutorform.html">Become Tutor</a></li>
@@ -115,7 +120,7 @@
         //window.addEventListener('load', (event) => {
 
             function submitButton() {
-                
+
             var input1 = document.getElementById("tutorName").value;
             var input2 = document.getElementById("courseNumber").value;
             // var input3 = document.getElementById("tutorName").value;
@@ -134,16 +139,16 @@
                 return
             }
         }
-        
+
  // }
           </script>
           <div class = "wholeForm">
     <div class = "surveyHeader"><h2>Feedback Survey!</h2></div>
     <div class = "forms">
-        
+
             <form id="form" method="POST" onsubmit="alert('Submitted!'); return false">
-               
-        
+
+
         <div class = "course">
             Course you got tutored in <br>
             <input type = "text" name = "courseNumber" id = "courseNumber" onkeydown=submitButton() onkeyup=submitButton() onkeypress=submitButton() required > <br>
@@ -196,7 +201,7 @@
   <div class = "questions">
         <p> Have questions? <a href = "ContactUsLC"> <b>Contact us today!</b></a></p>
     </div>
-    
+
     </body>
     </html>
-    
+
