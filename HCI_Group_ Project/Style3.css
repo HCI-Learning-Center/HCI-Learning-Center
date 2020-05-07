@@ -140,3 +140,11 @@ section {
     background-color: #A9C9FF;
     color: white;
 }
+
+.nav-logo{
+    padding: .3em;
+}
+
+.nav-logo:hover {
+    padding: .3em;
+}
