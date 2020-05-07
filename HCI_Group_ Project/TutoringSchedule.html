@@ -27,6 +27,16 @@
             width: 95%;
 
         }
+        
+        td{
+            padding: 4px;
+        }
+        .table-hover tbody tr:hover td {
+            background: gray;
+        }
+        .table-hover tbody tr:hover th{
+            background:gray;
+        }
 
         .scheduleTable {
             padding-left: 60px;
@@ -74,8 +84,8 @@
     <div class="link">
         <a class ="btn btn-primary" href="tutorform.html" role="button">Sign Up to be a Tutor Today!</a>
     </div>
-    <div class="scheduleTable">
-        <table cellpadding="10">
+    <div class="scheduleTable" >
+        <table cellpadding="10" class="table-hover">
             <colgroup>
                 <col span="12">
             </colgroup>
