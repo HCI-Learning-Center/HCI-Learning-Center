@@ -138,10 +138,14 @@ section {
 }
 
 .navbar-nav>li{
+    padding: .3em; /*makes up for logo padding*/
+
     transition: 0.1s;
 }
 
 .navbar-nav>li:hover {
+    padding: .3em; /*makes up for logo padding*/
+
     background-color: #A9C9FF;
     color: white;
 }
