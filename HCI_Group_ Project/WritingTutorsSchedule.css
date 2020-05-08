@@ -17,20 +17,28 @@ body{
 #appointment-section { grid-area: 3 / 1 / 13 / 6;}
 #calendar-section { grid-area: 1 / 6 / 7 / 8; }
 #preview  { grid-area: 7 / 6 / 12 / 8; }
-#book-button-section { grid-area: 12 / 6 / 13 /8;}
+#book-button-section { grid-area: 12 / 6 / 14 /8;}
 
-#calendar-section {
+#calendar-section, #book-button-section{
   margin-left: 3%;
 }
 
-#book-button-section, #preview{
+#preview{
   margin: 3%;
 }
 
 #book-button-section{
   align-self: end;
-  max-height: 100%;
+  /* max-height: 100%;
+  width: 110%; */
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap:nowrap;
+  overflow-x:auto; */
+  /* padding-right:10%; */
 }
+
+
 
 #appointment-section, #preview{
   overflow-y:auto;
@@ -39,7 +47,7 @@ body{
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  overflow-x:auto;
+
 }
 li > div {
   margin: 1em;
@@ -49,18 +57,27 @@ li > div {
 
 .appointment-slot{
   background-color: rgba(117, 229, 242, 0.5);
+  transition: 0.2s;
 }
 
 .appointment-slot:hover{
   background-color: rgb(111, 188, 255);
+    transition: 0.3s;
 }
 
 .selectedAppCSS{
-  background-color: rgb(70, 169, 255);
+
+  background-color: rgb(103, 184, 255);
+
+
+
+
 }
 
 .selectedAppCSS:hover {
-  background-color: rgb(70, 169, 255);
+  /* background-color: rgb(70, 169, 255); */
+  background-color: rgb(94, 175, 247);
+
 }
 
 
@@ -77,7 +94,9 @@ label+input[type="radio"]:checked{
 .flex-tutor-location{
   display:flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  width: 75%;
+
 }
 /* #book-button{
   margin: 1em;
@@ -89,6 +108,17 @@ label+input[type="radio"]:checked{
   margin-left: auto;
 } */
 
+.previewbg{
+  margin-right: 1em;
+}
+
+.tutor-name, .time, .location{
+  font-weight: normal;
+}
+
+.tutor-name > strong, .time> strong, .location> strong{
+  /* color: darkblue; */
+}
 /**==== CSS for modal: Source https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal ===**/
 /* The Modal (background) */
 .modal {
@@ -111,7 +141,7 @@ label+input[type="radio"]:checked{
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 75%;
 }
 
 /* The Close Button */

@@ -256,9 +256,12 @@ function displayAvailableAppointments() {
 					<div id="div_employeeId_${tutor.employeeId}_appIndex_${i}" class="appointment-slot">
 					<label>
 					<input class="radioButtonClick" type="radio" id= "employeeId:${tutor.employeeId}:appIndex:${i}"  name="app" value="employeeId_${tutor.employeeId}_appIndex_${i}" ${tutor.employeeId === 0 && i===0 ? "checked": ""}>
-        <p class="tutor-name"> Tutor: ${tutor.name}</p>
-        <p class="time">Time: ${moment(appointment.startTime).format('LT')} - ${moment(appointment.endTime).format('LT')} </p>
-        <p class="location"> Location: ${appointment.location} </p>
+				<p class="tutor-name">
+							<strong>Tutor:</strong> ${tutor.name}</p>
+				<p class="time">
+							<strong>Time:</strong> ${moment(appointment.startTime).format('LT')} - ${moment(appointment.endTime).format('LT')} </p>
+				<p class="location">
+							<strong>Location:</strong> ${appointment.location} </p>
 				<input type="hidden" value="${appointmentJSON}">
 				</label>
         </div>
@@ -273,7 +276,7 @@ function displayAvailableAppointments() {
 
 	}
 
-//event handler calls this function when user clicks on an appointment
+//event handler calls this function when user clicks on an appointment slot
 //
 function clickAppointment(){
 
@@ -289,17 +292,17 @@ function clickAppointment(){
 	$(`#div_employeeId_${employeeId}_appIndex_${appIndex}`).addClass('selectedAppCSS')
 
 	let appointment = tutors[employeeId].appointments[appIndex]
-
+	$('#preview').addClass('previewbg')
 	//display Appointment in Preview
 	$('#preview').html(
-		`<p> Appointment Preview: </p>
+		`	<h4> Appointment Preview: </h4>
 		<div class="flex-tutor-location">
-		<p> Tutor Name: <br>${tutors[employeeId].name} </p>
+			<span><h5>Tutor Name:</h5><p>${tutors[employeeId].name}</p></span>
 
-		<p> Location: <br>${appointment.location} </p>
+			<span><h5>Location:</h5><p>${appointment.location}</p></span>
 		</div>
-			<p> Appointment Date & Time: <br> ${moment(appointment.startTime).format('dddd, MMMM Do YYYY, h:mm a')} - ${moment(appointment.endTime).format('LT')}
-			${appointment.description ? "<p>Description: <br>"+ appointment.description +"</p>": ''}
+			<h5>Appointment Date & Time:</h5> <p>${moment(appointment.startTime).format('dddd, MMMM Do YYYY, h:mm a')} - ${moment(appointment.endTime).format('LT')}
+			${appointment.description ? "<h5>Description:</h5> <p>"+ appointment.description +"</p>": ''}
 			<br>
 			`);
 }
@@ -321,15 +324,40 @@ function findAppointmentInArray(){
 	return [employeeId, appIndex, appointment, name];
 }
 
+function findCancelledAppointmentInArray(){
+	//radioSelectedId is of the form "employeeId:${tutor.employeeId}:appIndex:${i}"
+	var radioSelectedId = $("input[name='canceloption']:checked").val();
+	let radioParsed = radioSelectedId.split("_");
+	//console.log(radioParsed)
+	let employeeId = radioParsed[1];
+	let appIndex = radioParsed[3];
+	//console.log(tutors[employeeId].appointments[appIndex])
+	let appointment = tutors[employeeId].appointments[appIndex]
+	let name = tutors[employeeId].name;
+	return [employeeId, appIndex, appointment, name];
+}
+
+
+//this is called when user confirms they would like to book an appointment.
 function bookAppointment(){
 
 	let [employeeId, appIndex, appointment] = findAppointmentInArray()
+
+	displayAvailableAppointments();
+	$('.modal-content').html(`<span class="close">&times;</span>
+	<h3>Your appointment has been booked!</h3>
+	<p id="modal-appointment-info">
+		Check your email for confirmation.<br>
+		You are booked with ${tutors[employeeId].name} on ${moment(appointment.startTime).format('dddd, MMMM Do, YYYY')} between ${moment(appointment.startTime).format('LT')}- ${moment(appointment.endTime).format('LT')}
+	</p>
+	<button onclick="cancelModal()" type="button" class="btn btn-success"> Return to Schedule </button>
+	`)
+
+	// $('#modal-appointment-info').html(`Your appointment has been booked! Check your email for confirmation.
+	// You are booked with ${tutors[employeeId].name} on ${moment(appointment.startTime).format('dddd, MMMM Do, YYYY')} between ${moment(appointment.startTime).format('LT')}- ${moment(appointment.endTime).format('LT')}
+	// `);
 	appointment.status = 'booked'
 	displayAvailableAppointments();
-
-	$('#modal-appointment-info').html(`Your appointment has been booked! Check your email for confirmation.
-	You are booked with ${tutors[employeeId].name} on ${moment(appointment.startTime).format('dddd, MMMM Do, YYYY')} between ${moment(appointment.startTime).format('LT')}- ${moment(appointment.endTime).format('LT')}
-	`);
 }
 
 //Making use of the load function, as it will fire once the whole page has loaded, including all dependent resources such as stylesheets and images
@@ -347,13 +375,48 @@ $('#mini-calendar').datepicker({
 //set active date on mini calendar to today
 $('#mini-calendar').datepicker('update', new Date())
 
+
 displayAvailableAppointments();
-
-
 });
 
 function confirmAppointment(){
 	window.confirm("Are you sure you would like to book this appointment?")
+}
+
+function displayBookedAppointments(){
+	let appointmentHTML = ''
+  for (let tutor of tutors) {
+      for (let [i, appointment] of tutor.appointments.entries()){
+
+		//console.log(tutors)//if the appointment is not available, then do not display it, and move on to next round of the for loop
+			if(appointment.status === 'booked'){
+				appointmentHTML+= `
+				<span>
+				<input class="radioCancelButtonClick" name="canceloption" type="radio" value="employeeId_${tutor.employeeId}_appIndex_${i}"}>
+				<label> <p>Tutor: ${tutor.name}, Time: ${moment(appointment.startTime).format('LT')} - ${moment(appointment.endTime).format('LT')}, Location: ${appointment.location} </p>
+				</label>
+				<br></span>`
+			}
+			}
+		}
+
+	return appointmentHTML;
+}
+
+function cancelAppointment(){
+	let [employeeId, appIndex, appointment, name] = findCancelledAppointmentInArray()
+
+	$('.modal-content').html(`<span class="close">&times;</span>
+	<h3 style="color:red" >Your appointment has been cancelled:</h3>
+	<p id="modal-appointment-info">
+		This appointment has now been released: <br>
+		${tutors[employeeId].name} on ${moment(appointment.startTime).format('dddd, MMMM Do, YYYY')} between ${moment(appointment.startTime).format('LT')}- ${moment(appointment.endTime).format('LT')}
+	</p>
+	<button onclick="cancelModal()" type="button" class="btn btn-success"> Return to Schedule </button>
+	`)
+
+	appointment.status = 'available'
+	displayAvailableAppointments();
 }
 
 /**Source code: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal */
@@ -363,27 +426,63 @@ var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
 var btn = document.getElementById("book-button");
+var cancelbtn = document.getElementById("cancel-button");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal
+// When the user clicks the book button, open the modal to confirm booking an appointment (will display preview of appointment, as well as Book and Cancel buttons. Will then switch to confirmation if booked.)
 btn.onclick = function() {
 	displayModal();
 
 	let [employeeId, appIndex, appointment, name] = findAppointmentInArray();
 
-	$('#modal-appointment-info').html(
-		`<p> Appointment Preview: </p>
-		<p> Tutor Name: <br>${tutors[employeeId].name} </p>
-		<p> Location: <br>${appointment.location} </p>
-			<p> Appointment Date & Time: <br> ${moment(appointment.startTime).format('dddd, MMMM Do YYYY, h:mm a')} - ${moment(appointment.endTime).format('LT')}
-			${appointment.description ? "<p>Description: <br>"+ appointment.description +"</p>": ''}
+	$('.modal-content').html(
+		`<span class="close">&times;</span>
+    <h3>Are you sure you would like to book the following appointment?</h3>
+		<h4> Appointment Preview: </h4>
+		<p id="modal-appointment-info">
+		<div class="flex-tutor-location">
+			<span><h5>Tutor Name:</h5><p>${tutors[employeeId].name}</p></span>
+
+			<span><h5>Location:</h5><p>${appointment.location}</p></span>
+		</div>
+			<h5>Appointment Date & Time:</h5> <p>${moment(appointment.startTime).format('dddd, MMMM Do YYYY, h:mm a')} - ${moment(appointment.endTime).format('LT')}
+			${appointment.description ? "<h5>Description:</h5> <p>"+ appointment.description +"</p>": ''}
 			<br>
+			</p>
+			<button onclick="bookAppointment()" type="button" class="btn btn-success"> Book Appointment </button>
+			<button onclick="cancelModal()" type="button" class="btn btn-default"> Cancel </button>
 			`);
 
 }
 
+// When the user clicks the book button, open the modal
+cancelbtn.onclick = function() {
+	displayModal();
+	let displayCancelledHTML = displayBookedAppointments();
+	if(displayCancelledHTML){
+		$('.modal-content').html(`<span class="close">&times;</span>
+		<h3>The following are a list of your appointments. Which one would you like to cancel?</h3>
+		<p id="modal-appointment-info">
+				${displayCancelledHTML}
+		</p>
+		<button onclick="cancelAppointment()" id="cancelled" class="btn btn-danger" onclick="cancelModal()" type="button" class="btn btn-success"> Cancel Appointment </button>
+		<button onclick="cancelModal()" type="button" class="btn btn-success"> Return to Schedule </button>
+		`)
+	}
+	else{
+		$('.modal-content').html(`<span class="close">&times;</span>
+		<h3>You have not booked any appointments!</h3>
+		<button onclick="cancelModal()" type="button" class="btn btn-success"> Return to Schedule </button>
+		`)
+	}
+	//let [employeeId, appIndex, appointment, name] = findAppointmentInArray();
+
+}
+
+
+/**MODAL SETTINGS */
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
 	modal.style.display = "none";

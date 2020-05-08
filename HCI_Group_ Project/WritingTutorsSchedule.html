@@ -66,7 +66,7 @@
     <div id="appointment-section">
       <fieldset>
         <legend>Available Appointments</legend>
-          <ul id="appointment-list">
+          <ol id="appointment-list">
             <span>9AM</span><li class="appointment-li" id="9"></li>
             <span>10AM</span><li class="appointment-li" id="10"></li>
             <span>11AM</span>
@@ -85,7 +85,7 @@
             <li class="appointment-li" id="5"></li>
             <span>6PM</span>
             <li class="appointment-li" id="6"></li>
-          </ul>
+          </ol>
         </fieldset>
     </div>
 
@@ -108,8 +108,9 @@
     <a  class ="btn btn-primary"  role="button" onclick="bookAppointment();return false;">Book Appointment</a>
   </div> -->
 
-  <div id="book-button" class="link">
-    <a  class ="btn btn-primary"  role="button" >Book Appointment</a>
+  <div id="book-button-section">
+    <button  id="book-button" class ="btn btn-primary"  role="button" >Book Appointment</button>
+    <button  id="cancel-button" class ="btn btn-default"  role="button" >Cancel an Appointment</button>
   </div>
 
  </div>
