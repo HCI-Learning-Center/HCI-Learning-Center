@@ -134,7 +134,7 @@
 
 	<div class="form-group has-feedback" id="f1"  >
 		<label for="signup_firstname">First Name</label>
-	   	<input type="text" name="firstname" class="form-control"placeholder="First Name" id="signup_firstname" pattern="[A-Za-z]{1,15}" minlength="1" oninvalid="this.setCustomValidity('Enter alphabet characters (a-z, A_Z)')"   oninput="this.setCustomValidity('')"   onblur="visualValidation(this.id, 'f1', 'helpBlock1')" onchange="removeVisual('f1', 'helpBlock1');showGlyphicon('SuccessGlyphicon1','ErrorGlyphicon1', 'f1', this.id); "value="" aria-describedby="helpBlock1" required>
+	   	<input type="text" name="firstname" class="form-control"placeholder="First Name" id="signup_firstname" pattern="[A-Za-z]{1,15}" minlength="1" oninvalid="this.setCustomValidity('Enter alphabet characters (a-z, A_Z)')"   oninput="this.setCustomValidity('')"   onblur="visualValidation(this.id, 'f1', 'helpBlock1')" onchange="removeVisual('f1', 'helpBlock1');showGlyphicon('SuccessGlyphicon1','ErrorGlyphicon1', 'f1', this.id); "value="" aria-describedby="helpBlock1" data-toggle="tooltip" data-placement="right" title="Required"required>
 
 	   	<span id="helpBlock1" class="help-block" style="display:none">Required. Alphabet characters only.</span>
 		<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="SuccessGlyphicon1"></span>
@@ -143,7 +143,7 @@
 
 	<div class="form-group has-feedback" id="L2">
 		<label for="signup_lastname">Last Name</label>
-		<input type="text" name="firstname" class="form-control"placeholder="Last Name" id="signup_lastname" pattern="[A-Za-z]{1,15}" minlength="1" oninvalid="this.setCustomValidity('Enter alphabet characters (a-z, A_Z)')"   oninput="this.setCustomValidity('')" onblur="visualValidation(this.id, 'L2','helpBlock2')" onchange="removeVisual('L2','helpBlock2');showGlyphicon('SuccessGlyphicon2','ErrorGlyphicon2', 'L2', this.id);" value="" aria-describedby="helpBlock2" required>
+		<input type="text" name="firstname" class="form-control"placeholder="Last Name" id="signup_lastname" pattern="[A-Za-z]{1,15}" minlength="1" oninvalid="this.setCustomValidity('Enter alphabet characters (a-z, A_Z)')"   oninput="this.setCustomValidity('')" onblur="visualValidation(this.id, 'L2','helpBlock2')" onchange="removeVisual('L2','helpBlock2');showGlyphicon('SuccessGlyphicon2','ErrorGlyphicon2', 'L2', this.id);" value="" aria-describedby="helpBlock2" data-toggle="tooltip" data-placement="right" title="Required" required>
 
 		<span id="helpBlock2" class="help-block" style="display:none">Required. Alphabet characters only.</span>
 		<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true" style="visibility: hidden" id="SuccessGlyphicon2"></span>
@@ -152,7 +152,7 @@
 
 	<div class="form-group has-feedback" id="emailStyle">
 		<label for="preferred_email">Preferred Email:</label>
-		<input type="email" name="email" id="preferred_email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" class="form-control" onblur="visualValEmail(this.id, 'emailStyle', 'helpBlockEmail')" onchange="removeVisual('emailStyle','helpBlockEmail');showGlyphicon('SuccessGlyphicon3','ErrorGlyphicon3','emailStyle', this.id);" aria-describedby="helpEmail" required>
+		<input type="email" name="email" id="preferred_email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" class="form-control" onblur="visualValEmail(this.id, 'emailStyle', 'helpBlockEmail')" onchange="removeVisual('emailStyle','helpBlockEmail');showGlyphicon('SuccessGlyphicon3','ErrorGlyphicon3','emailStyle', this.id);" aria-describedby="helpEmail" data-toggle="tooltip" data-placement="right" title="Required" required>
 
 		<span id="helpBlockEmail" class="help-block" style="display:none">Required. Enter valid email: example@mail.com.</span>
 
@@ -161,7 +161,7 @@
 	</div>
 
 	<div class="form-group has-feedback" id="phoneStyle">
-		<label for="phone">Phone Number:</label> <br>
+		<label for="phone" data-toggle="tooltip" data-placement="right" title="Required">Phone Number:</label> <br>
 		<!-- <div class="form-control"> -->
 			<input  type="tel" name="phone1" id="phone"pattern="[0-9]{3}" maxlength="3" onkeyup="autotab(this, document.getElementById('phone2'))" placeholder="222" class="form-control" onblur="visualValidation(this.id, 'phoneStyle','helpBlockPhone')" onchange="removeVisual('phoneStyle','helpBlockPhone');showGlyphicon('SuccessGlyphicon4','ErrorGlyphicon4','phoneStyle', this.id);" required>
 
@@ -199,7 +199,7 @@
 		<label>Please list the courses you can teach, click yes to add more courses (May apply for 3 courses max)</label>
 
 		<div class="text-center" id="C1">
-			Course 1<input type="text" name="course_1" id="course_1" class="form-control" onblur="visualValidation(this.id, 'C1','helpBlockCourse')" onchange="removeVisual('C1', 'helpBlockCourse')" aria-describedby="helpBlockCourse" required> <br>
+			Course 1<input type="text" name="course_1" id="course_1" class="form-control" onblur="visualValidation(this.id, 'C1','helpBlockCourse')" onchange="removeVisual('C1', 'helpBlockCourse')" aria-describedby="helpBlockCourse" required data-toggle="tooltip" data-placement="right" title="Required. Add at least one course"> <br>
 		<span id="helpBlockCourse" class="help-block" style="display:none">Required (Course to tutor)</span>
 		</div>
 
@@ -224,7 +224,7 @@
 
 	<div class="form-group input-group mb-3 ">
 		<div class="input-group-prepend" class="input-group-text ">
-			<label for="days_available">What days are you able to tutor?</label>
+			<label for="days_available" data-toggle="tooltip" data-placement="right" title="Required">What days are you able to tutor?</label>
 	<!--	<select class="form-control" multiple id="days_available">
 				<option selected value="no_val" disabled>Choose...</option>
 				<option value="Mon">Monday</option>
@@ -263,7 +263,7 @@
 	<div class="form-group input-group mb-3" id="timeId">
 		<label for="time_available" aria-describedby="helpBlockTime">What times are you able to tutor?</label>
 		<br><small id="time-Help" class="form-text text-muted">For multiple selections: Hold 'CTRL' or 'Command' on keyboard while clicking simultaneously.</small>
-		<select class="form-control" multiple=""  id="time_available">
+		<select class="form-control" multiple=""  id="time_available" data-toggle="tooltip" data-placement="right" title="Select at least one. ">
 			<option name="time_available" value="no_val" disabled>Choose...</option>
 			<option name="time_available" value="Mornings">Mornings</option>
 			<option name="time_available" value="Afternoon">Afternoons</option>
@@ -275,7 +275,7 @@
 	<div class=" form-group has-feedback" id="potential_style">
 		<div>
 			<label  class="control-label" for="potential_start_date" id="start-date" aria-describedby="helpBlockStartWork">When can you start working for us?</label>
-			<select class="form-control" id="start-work" required>
+			<select class="form-control" id="start-work" required data-toggle="tooltip" data-placement="right" title="Select one. Required ">
 				<option selected value="no_val" >Choose...</option>
 				<option value="immediate">Immediately</option>
 				<option value="1-week">1 week</option>
@@ -290,7 +290,7 @@
 	<div class=" form-group" id="textboxDiv">
 
 		<label for="text_box" class="input-group-text ">If you have tutored before, tell us about it here:</label>
-		<textarea id="text_box" class="form-control" maxlength="500" wrap="soft"></textarea>
+		<textarea id="text_box" class="form-control" maxlength="500" wrap="soft" data-toggle="tooltip" data-placement="right" title="Optional, but we would like to hear your experiences! "></textarea>
 		<span id="helpBlockTextArea" class="help-block" style="display: none">We would love to know able your experiences</span>
 		<span id="helpBlockTextArea2" class="help-block" style="display: none">Thank you!</span>
 
@@ -298,7 +298,7 @@
 
 	<div class="form-group">
 		<label for="picture">Upload a picture:</label>
-		<input type="file" name="picture" id="picture" accept="image/*" class="form-control">
+		<input type="file" name="picture" id="picture" accept="image/*" class="form-control" data-toggle="tooltip" data-placement="right" title="Optional ">
 	</div>
 
 	<div class="form-group">

@@ -243,5 +243,7 @@ function showfker(){
 	console.log(document.getElementById('start-work').value);
 }
 
-
-
+//Use to display message, on-hover, when user hovers on input-box
+$(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+        });  

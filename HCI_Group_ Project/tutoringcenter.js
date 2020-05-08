@@ -203,5 +203,9 @@ $(document).ready(function(){
 	});
 });
 
+//Used to toggle the tooltip messages, when user hover over field box
+$(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+        });  
 
 
