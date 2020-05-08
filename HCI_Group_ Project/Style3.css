@@ -137,6 +137,10 @@ section {
     padding: 20px 15px 0;
 }
 
+.navbar-nav>li{
+    transition: 0.1s;
+}
+
 .navbar-nav>li:hover {
     background-color: #A9C9FF;
     color: white;

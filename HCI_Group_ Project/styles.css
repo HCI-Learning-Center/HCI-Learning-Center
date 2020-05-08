@@ -28,7 +28,12 @@ table, th, td {
 }
 th,td{
     padding: 15px;
+    text-align: center;
 }
+#schedule-thead>tr>th{
+    border-bottom-color: black;
+}
+
 #Hours{
     max-width: 600px;
     max-height: 600px;
@@ -56,6 +61,11 @@ th,td{
     margin: auto;
     display: inline;
 }
+
+.navbar-nav>li{
+    transition: 0.1s;
+}
+
 .navbar-nav>li:hover {
     background-color: #A9C9FF;
     color: white;
