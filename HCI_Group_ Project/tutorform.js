@@ -60,7 +60,7 @@ function setShit(){
 	
 
 	console.log(localStorage.getItem("firstN"));
-	console.log(localStorage.getItem("lasttN"));
+	console.log(localStorage.getItem("lastN"));
 	console.log(localStorage.getItem("prefEmail"));
 
 	console.log(sessionStorage.getItem("userPhone"));
