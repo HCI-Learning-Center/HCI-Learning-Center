@@ -57,13 +57,16 @@
     }
     .put-reviews div{
         padding-top: 10px;
-        padding-bottom: 40px;
+        padding-bottom: 50px;
     }
     /* .remove_field .btn{
        margin-left: 0 auto;
     }*/
     .border-BOT{
         border-bottom: 2px solid #CED7D6;
+    }
+    .border-BOT div{
+        padding-bottom: 20px;
     }
     /* #satisfied label input[name = satisfaction] {
         font-weight: normal;
@@ -125,7 +128,7 @@
                 if(x < max_fields){ //max input box allowed
                     x++; //text box increment
 
-                    $(wrapper).append('<div class="border-BOT">User: '+ localStorage.getItem('userN') +'<br>Course:'+sessionStorage.getItem('courseName') +'<br>Rating:'+sessionStorage.getItem('rating') +'<textarea name="textBoxReview" class="form-control" disabled ="true" >'+$("#textBox").val() +'</textarea>'+ '<a href="#"  class="remove_field btn btn-danger pull-right " role="button">Remove</a>' + '<span></span>'+'</div>');
+                    $(wrapper).append('<div class="border-BOT"> <div class="container-fluid ">Tutor: '+ sessionStorage.getItem('tutorName') +'<br>Course: '+sessionStorage.getItem('courseName') +'<br>Rating:'+sessionStorage.getItem('rating')+'</div>' +'<textarea name="textBoxReview" class="form-control" disabled ="true" >'+$("#textBox").val() +'</textarea>'+ '<a href="#"  class="remove_field btn btn-danger pull-right " role="button">Remove</a>' + '<span></span>'+'</div>');
                 }
             });
 
@@ -255,7 +258,7 @@
             </fieldset>
         </div>
         <div class = "form-group" id = "additionalComments">
-            <label for="textBox">Additional comments:</label>
+            <label for="textBox">Comment:</label>
             <textarea id="textBox" rows="5" cols="50" maxlength="500" name = "textBox" class="form-control" id = "textBox" onchange="submitButton();" data-toggle="tooltip" data-placement="right" title="Required. It's helpful for us!"></textarea><br>
         </div>
         <div class="submit">
