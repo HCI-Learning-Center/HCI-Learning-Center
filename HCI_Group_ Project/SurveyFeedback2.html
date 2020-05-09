@@ -52,6 +52,9 @@
     .questions{
         margin-top: 40px;
     }
+    .questions a {
+        color: #2249A8;
+    }
     .put-reviews div{
         padding-top: 10px;
         padding-bottom: 40px;
@@ -62,6 +65,9 @@
     .border-BOT{
         border-bottom: 2px solid #CED7D6;
     }
+    /* #satisfied label input[name = satisfaction] {
+        font-weight: normal;
+    }*/
     </style>
     <script>
         //Validates if the essential information is entered
@@ -193,7 +199,7 @@
         </div>
 
         <div class = "form-group" id = "nameOfTutor">
-            <label for="tutorName">Name Of Tutor</label>
+            <label for="tutor-name">Name Of Tutor</label>
             <select class="form-control" id="tutor-name"  onchange="submitButton()" onfocus="submitButton()" data-toggle="tooltip" data-placement="right" title="Required."required>
                 <option selected value="no_val" disabled>Pick one</option>
                 <option value="Doe"> Jenna Doe</option>
@@ -207,21 +213,33 @@
 
 
         <div class = "form-group" id= "satisfied" >
-            <label class="control-label" for="satisfied">On a scale of 1-5 how satisfied were you with the tutoring session?</label> <br>
-            <input type = "radio" name = "satisfaction"  id="satisfaction" value = "1"> 1 (Not satisfied) <br>
-            <input type = "radio" name = "satisfaction" value = "2"> 2 <br>
-            <input type = "radio" name = "satisfaction" value = "3"> 3 <br>
-            <input type = "radio" name = "satisfaction" value = "4"> 4 <br>
-            <input type = "radio" name = "satisfaction" value = "5"> 5 (Very satisfied) <br>
+            <label class="control-label" for="satisfied">On a scale of 1-5 how satisfied were you with the tutoring session?</label> <br> 
+            <input type = "radio" name = "satisfaction"  id="satisfied1" value = "1"> 
+                <label for="satisfied1" style="font-weight: normal;" > 1 (Not satisfied) </label>  <br>
+            <input type = "radio" name = "satisfaction" value = "2" id="satisfied2"> 
+                <label for="satisfied2" style="font-weight: normal;"> 2</label> <br>
+            <input type = "radio" name = "satisfaction" value = "3"> 
+                <label for="satisfied3" style="font-weight: normal;"> 3</label> <br>
+            <input type = "radio" name = "satisfaction" value = "4" id="satisfied4"> 
+                <label for="satisfied4" style="font-weight: normal;"> 4</label><br>
+            <input type = "radio" name = "satisfaction" value = "5" id="satisfied5"> 
+                <label for="satisfied5" style="font-weight: normal;"> 5 (Very satisfied)</label>  <br>
         </div>
+        
         <div class = "form-group" id = "learn">
             <label for="learn">On a scale of 1-5 how much did you learn?</label> <br>
-            <input type = "radio" name = "learned" id="learned" value = "1"> 1 (Not much at all) <br>
-            <input type = "radio" name = "learned" value = "2"> 2 <br>
-            <input type = "radio" name = "learned" value = "3"> 3 <br>
-            <input type = "radio" name = "learned" value = "4"> 4 <br>
-            <input type = "radio" name = "learned" value = "5"> 5 (A lot) <br>
+            <input type = "radio" name = "learned" id="learned_val_1" value = "1"> 
+                <label for="learned_val_1" style="font-weight: normal;"> 1 (Not much at all) </label> <br>
+            <input type = "radio" name = "learned" value = "2" id="learned_val_2"> 
+                <label for="learned_val_2" style="font-weight: normal;"> 2 </label> <br>
+            <input type = "radio" name = "learned" value = "3" id="learned_val_3"> 
+                <label for="learned_val_3" style="font-weight: normal;"> 3 </label> <br>
+            <input type = "radio" name = "learned" value = "4" id="learned_val_4"> 
+                <label for="learned_val_4" style="font-weight: normal;"> 4 </label> <br>
+            <input type = "radio" name = "learned" value = "5" id="learned_val_5"> 
+                <label for="learned_val_5" style="font-weight: normal;"> 5 (A lot) </label> <br>
         </div>
+
         <div class = "form-group" id = "worked">
            <label for="workWell">What has worked well for you during the tutoring sessions?</label>
             <input type = "text" name = "workWell" class="form-control" id = "workWell"data-toggle="tooltip" data-placement="right" title="Optional."  > <br>

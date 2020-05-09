@@ -59,6 +59,9 @@
         justify-content: center;
         margin-top:30px; margin-bottom: 0px;
     }
+    p a{
+        color: #2249A8;
+    }
 </style>
 
 </head>
@@ -143,14 +146,14 @@
     <div class="form-group">
 	   <label for="password">Create password</label>
 	   <input type="password" name="password" class="form-control" id="password" required minlength="4" placeholder="Password" data-toggle="tooltip" data-placement="right" title="Required.">
-	   <input type="checkbox" name="toggleMe" onclick=" showPass('password')" >  Show Password
+	   <input type="checkbox" name="toggleMe" onclick=" showPass('password')" id="passtoggle1">  <label for="passtoggle1"style="font-weight: normal;">Show Password</label>
 	 <br><br>
     </div>
 
     <div class="form-group">
-	   <label for="passReenter">Confirm Password</label>
+	   <label for="password2">Confirm Password</label>
 	   <input type="password" name="password2" class="form-control" id="password2" required minlength="4" placeholder="Re-enter Password" data-toggle="tooltip" data-placement="right" title="Required.">
-	   <input type="checkbox" name="toggleMe" onclick=" showPass('password2')">  Show Password
+	   <input type="checkbox" name="toggleMe" onclick=" showPass('password2')" id="passtoggle2">  <label for="passtoggle" style="font-weight: normal;">Show Password</label>
        <br><br>
     </div>
 
