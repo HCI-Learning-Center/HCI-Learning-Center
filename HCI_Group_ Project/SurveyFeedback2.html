@@ -259,7 +259,7 @@
         </div>
         <div class = "form-group" id = "additionalComments">
             <label for="textBox">Comment:</label>
-            <textarea id="textBox" rows="5" cols="50" maxlength="500" name = "textBox" class="form-control" id = "textBox" onchange="submitButton();" data-toggle="tooltip" data-placement="right" title="Required. It's helpful for us!"></textarea><br>
+            <textarea id="textBox" rows="5" cols="50" maxlength="500" name = "textBox" class="form-control" id = "textBox" onchange="submitButton();" onkeyup="submitButton();" data-toggle="tooltip" data-placement="right" title="Required. It's helpful for us!"></textarea><br>
         </div>
         <div class="submit">
                 <button id="submit" type="submit" value="submit" class="btn btn-success btn-block" disabled="disabled" data-toggle="modal" data-target="#myModal">Submit</button>
