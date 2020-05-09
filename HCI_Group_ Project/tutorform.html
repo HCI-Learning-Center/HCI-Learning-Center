@@ -210,9 +210,9 @@
 		</div>
 
 		<div class="text-center">
-			Add second Course? Yes <input type="radio"  onclick="addField(document.getElementById('ifYes').id)" name="yesno" id="yes" value="yes" >
+			<label for="yes"style="font-weight: normal;">Add second Course? Yes </label> <input type="radio"  onclick="addField(document.getElementById('ifYes').id)" name="yesno" id="yes" value="yes" >
 
-			No <input type="radio" onclick="addField(document.getElementById('ifYes').id);" name="yesno" id="no" value="no"  >
+			<label for="no" style="font-weight: normal;">No </label><input type="radio" onclick="addField(document.getElementById('ifYes').id);" name="yesno" id="no" value="no"  >
 		</div>
 
 		<div id="ifYes" style="display: none;" class="text-center" id="C2">
@@ -285,7 +285,7 @@
 
 	<div class=" form-group has-feedback" id="potential_style">
 		<div>
-			<label  class="control-label" for="potential_start_date" id="start-work" aria-describedby="helpBlockStartWork">When can you start working for us?</label>
+			<label  class="control-label" for="start-work" id="start-work" aria-describedby="helpBlockStartWork">When can you start working for us?</label>
 			<select class="form-control" id="start-work" required data-toggle="tooltip" data-placement="right" title="Select one. Required ">
 				<option selected value="no_val" >Choose...</option>
 				<option value="immediate">Immediately</option>
