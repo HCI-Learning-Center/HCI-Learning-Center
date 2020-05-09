@@ -80,6 +80,9 @@
     label{
     	margin-top:5px;
     }
+    .checkbox label {
+    	margin-top: 0px;
+    }
 </style>
 </head>
 <body>
@@ -152,7 +155,7 @@
 
 	<div class="form-group has-feedback" id="emailStyle">
 		<label for="preferred_email">Preferred Email:</label>
-		<input type="email" name="email" id="preferred_email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" class="form-control" onblur="visualValEmail(this.id, 'emailStyle', 'helpBlockEmail')" onchange="removeVisual('emailStyle','helpBlockEmail');showGlyphicon('SuccessGlyphicon3','ErrorGlyphicon3','emailStyle', this.id);" aria-describedby="helpEmail" data-toggle="tooltip" data-placement="right" title="Required" required>
+		<input type="email" name="email" id="preferred_email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" class="form-control" onblur="visualValEmail(this.id, 'emailStyle', 'helpBlockEmail')" onchange="removeVisual('emailStyle','helpBlockEmail');showGlyphicon('SuccessGlyphicon3','ErrorGlyphicon3','emailStyle', this.id);" aria-describedby="helpBlockEmail" data-toggle="tooltip" data-placement="right" title="Required" required>
 
 		<span id="helpBlockEmail" class="help-block" style="display:none">Required. Enter valid email: example@mail.com.</span>
 
@@ -165,8 +168,10 @@
 		<!-- <div class="form-control"> -->
 			<input  type="tel" name="phone1" id="phone"pattern="[0-9]{3}" maxlength="3" onkeyup="autotab(this, document.getElementById('phone2'))" placeholder="222" class="form-control" onblur="visualValidation(this.id, 'phoneStyle','helpBlockPhone')" onchange="removeVisual('phoneStyle','helpBlockPhone');showGlyphicon('SuccessGlyphicon4','ErrorGlyphicon4','phoneStyle', this.id);" required>
 
+			<label for="phone2"></label>
 			<input type="tel" name="phone2" id="phone2"pattern="[0-9]{3}" maxlength="3" onkeyup="autotab(this,document.getElementById('phone3'))" placeholder="222" class="form-control" onblur="visualValidation(this.id, 'phoneStyle','helpBlockPhone')" onchange="removeVisual('phoneStyle','helpBlockPhone');showGlyphicon('SuccessGlyphicon4','ErrorGlyphicon4','phoneStyle', this.id);" required>
 
+			<label for="phone3"></label>
 			<input type="tel" name="phone3" id="phone3"pattern="[0-9]{4}" maxlength="4" placeholder="2222" class="form-control" onblur="visualValidation(this.id, 'phoneStyle','helpBlockPhone')" onchange="removeVisual('phoneStyle','helpBlockPhone');showGlyphicon('SuccessGlyphicon4','ErrorGlyphicon4','phoneStyle', this.id);" aria-describedby="helpBlockPhone" required>
 		<!-- </div> -->
 		<span id="helpBlockPhone" class="help-block" style="display:none">Required. Enter numbers only</span>
@@ -199,7 +204,8 @@
 		<label>Please list the courses you can teach, click yes to add more courses (May apply for 3 courses max)</label>
 
 		<div class="text-center" id="C1">
-			Course 1<input type="text" name="course_1" id="course_1" class="form-control" onblur="visualValidation(this.id, 'C1','helpBlockCourse')" onchange="removeVisual('C1', 'helpBlockCourse')" aria-describedby="helpBlockCourse" required data-toggle="tooltip" data-placement="right" title="Required. Add at least one course"> <br>
+			<label for="course_1">Course 1</label>
+			<input type="text" name="course_1" id="course_1" class="form-control" onblur="visualValidation(this.id, 'C1','helpBlockCourse')" onchange="removeVisual('C1', 'helpBlockCourse')" aria-describedby="helpBlockCourse" required data-toggle="tooltip" data-placement="right" title="Required. Add at least one course"> <br>
 		<span id="helpBlockCourse" class="help-block" style="display:none">Required (Course to tutor)</span>
 		</div>
 
@@ -234,24 +240,29 @@
 				<option value="Fri">Friday</option>
 				<option value="Sat">Saturday</option>
 			</select>
-	-->
-			<div class="checkbox" value="" >
-				<input type="checkbox" name="days_available" value="Mon"> Monday
+	-->	
+			<div class="checkbox"  > 
+				 <input type="checkbox" name="days_available" id="mondayID" value="Mon"> 
+				<label for="mondayID">Monday</label> 
 			</div>
 			<div class="checkbox">
-				<input type="checkbox" name="days_available" value="Tues"> Tuesday
+				<input type="checkbox" name="days_available" id="tuesdayID" value="Tues"> 
+				<label for="tuesdayID">Tuesday</label>
 			</div>
 			<div class="checkbox">
-				<input type="checkbox" name="days_available" value="Thur"> Thursday
+				<input type="checkbox" name="days_available" id="wednesdayID" value="Wed"> 
+				<label for="wednesdayID">Wednesday</label>
 			</div>
 			<div class="checkbox" >
-				<input type="checkbox" name="days_available" value="Wed"> Wednesday
+				<input type="checkbox" name="days_available" id="thursdayID" value="Thur"> 
+				<label for="thursdayID">Thursday</label>
 			</div>
 			<div class="checkbox" >
-				<input type="checkbox" name="days_available" value="Fri"> Friday
-			</div>
+				<input type="checkbox" name="days_available" id="fridayID" value="Fri"> 
+				<label for="fridayID">Friday</label>
 			<div class="checkbox" >
-				<input type="checkbox" name="days_available" value="Sat"> Saturday
+				<input type="checkbox" name="days_available" id="saturdayID" value="Sat"> 
+				<label for="saturdayID">Saturday</label>
 			</div>
 		</div>
 		<div class="" id="dayMessage">
@@ -269,12 +280,12 @@
 			<option name="time_available" value="Afternoon">Afternoons</option>
 			<option  name="time_available"value="Evening">Evenings</option>
 		</select>
-		<span id="#helpBlockTime" class="help-block" style="display: none;">Select at least one time you'll be able to tutor.</span>
+		<span id="helpBlockTime" class="help-block" style="display: none;">Select at least one time you'll be able to tutor.</span>
 	</div>
 
 	<div class=" form-group has-feedback" id="potential_style">
 		<div>
-			<label  class="control-label" for="potential_start_date" id="start-date" aria-describedby="helpBlockStartWork">When can you start working for us?</label>
+			<label  class="control-label" for="potential_start_date" id="start-work" aria-describedby="helpBlockStartWork">When can you start working for us?</label>
 			<select class="form-control" id="start-work" required data-toggle="tooltip" data-placement="right" title="Select one. Required ">
 				<option selected value="no_val" >Choose...</option>
 				<option value="immediate">Immediately</option>
